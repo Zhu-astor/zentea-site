@@ -83,6 +83,15 @@ html, body {
   will-change: transform, opacity;
 }
 
+/* ---------- Session 3：文字左／素材右，只做淡入淡出不做飄移 ----------
+   landscape-2.png 是 3:1 的寬幅山脈，比 session 1 的山水扁很多，
+   所以放寬一點、往右外推，讓它像一道遠景horizon 橫在右側。 */
+.session-asset.session-asset--fade {
+  width: 66vw;
+  max-width: 1040px;
+  right: -8vw;
+}
+
 /* ---------- Session 2（鏡像版型）：素材左／文字右上 ---------- */
 .session-text.session-text--right {
   left: auto;
@@ -93,6 +102,89 @@ html, body {
 .session-asset.session-asset--left {
   right: auto;
   left: -4vw;
+}
+
+/* ---------- Session 4：品牌理念（四項依序浮現） ---------- */
+#session-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8vh 6vw;
+}
+
+.ideas-title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 27px);
+  letter-spacing: 0.3em;
+  color: var(--ink);
+  margin-bottom: 6vh;
+  will-change: opacity;
+}
+
+.ideas {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(28px, 5vw, 76px);
+  max-width: 1180px;
+  width: 100%;
+}
+
+.idea {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 1 auto;
+  will-change: opacity;
+}
+
+.idea__icon {
+  width: clamp(74px, 7vw, 104px);
+  height: auto;
+  display: block;
+  margin-bottom: 22px;
+}
+
+/* 直排文字，標題在右、說明往左展開，跟品牌理念原稿一致 */
+.idea__text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-height: 34vh;
+}
+
+.idea__name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.5vw, 18px);
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.idea__text p {
+  font-size: clamp(11.5px, 1.05vw, 13px);
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0;
+  /* 直排時 <br> 會換到左邊一行，剛好對應原稿的多行直排 */
+}
+
+@media (max-width: 860px) {
+  .ideas {
+    gap: 22px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+  }
+  .idea__text { max-height: 46vh; }
 }
 
 /* ---------- placeholder for next session (temporary, for scroll testing) ---------- */
