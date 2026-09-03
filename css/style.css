@@ -148,12 +148,16 @@ html, body {
   margin-bottom: 22px;
 }
 
-/* 直排文字，標題在右、說明往左展開，跟品牌理念原稿一致 */
+/* 直排文字，標題在右、說明往左展開，跟品牌理念原稿一致。
+   注意：writing-mode: vertical-rl 之下，flex 的主軸是跟著 inline 軸走的，
+   而直排的 inline 軸是「垂直」方向——所以這裡要用 column 才會左右並排，
+   用 row 會變成標題被排到說明的上方。 */
 .idea__text {
   writing-mode: vertical-rl;
   text-orientation: upright;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start; /* 直排下的 cross 軸是垂直的，這裡讓兩欄頂端對齊 */
   gap: 14px;
   max-height: 34vh;
 }
