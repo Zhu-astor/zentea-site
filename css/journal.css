@@ -1,0 +1,226 @@
+/* 蟬茶日誌頁面樣式，共用 style.css 的色票/字體變數（--ink, --muted, --bg, --seal） */
+
+html, body.journal-page {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}
+
+.journal-hero {
+  display: block;
+  line-height: 0; /* 消除 img 預設的 inline baseline 縫隙 */
+}
+
+.journal-hero__img,
+.journal-footer__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- 四欄版型：資訊密度優先，盡量在一屏內看到多張卡片 ---------- */
+.journal-columns {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 4vw 56px;
+}
+
+.j-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0; /* 避免內容把欄位撐寬 */
+}
+
+.j-col > .j-card {
+  flex: 1;
+  min-height: 168px;
+}
+
+.j-col--hero > .j-card--hero {
+  min-height: 100%;
+}
+
+/* ---------- 卡片共同樣式：白底、文字左、圖片右 ---------- */
+.j-card {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #FAF8F4;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.j-card__body {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  width: 48%;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 主圖卡又高又窄，若沿用「文字左／圖片右」會把兩邊都壓成細長條，
+   圖片根本看不清楚。改成上下配置：文字在上、圖片在下方鋪滿整個寬度。 */
+.j-card--hero {
+  flex-direction: column;
+}
+
+.j-card--hero .j-card__body {
+  width: 100%;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  padding: 20px 18px 14px;
+}
+
+.j-card--hero .j-card__media {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.j-card__eyebrow {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--seal);
+  margin: 0 0 4px;
+}
+
+.j-card__title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.j-card--hero .j-card__title {
+  font-size: 19px;
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.j-card__desc {
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+.j-card__arrow {
+  display: inline-block;
+  font-size: 10.5px;
+  color: var(--ink);
+  transition: transform 0.25s ease;
+}
+
+.j-card:hover .j-card__arrow {
+  transform: translateX(4px);
+}
+
+.j-card:hover {
+  box-shadow: 0 12px 26px rgba(42, 38, 32, 0.1);
+}
+
+/* 圖片區塊：固定在卡片右側，佔滿卡片高度，跟文字區塊留安全間距不重疊 */
+.j-card__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  z-index: 1;
+}
+
+.j-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 純裝飾圖片卡（沒有文字），圖片可以佔滿整張卡 */
+.j-card__media--full {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- 試作：兩種照片漸層處理 ---------- */
+
+/* 區塊 A：照片鋪滿整張卡，最左完全透明 → 最右完全實體。
+   文字落在左側透明區，壓在乾淨底色上仍然好讀。 */
+.j-card.j-card--fade-a .j-card__media {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.28) 34%, rgba(0,0,0,0.72) 62%, rgba(0,0,0,1) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.28) 34%, rgba(0,0,0,0.72) 62%, rgba(0,0,0,1) 100%);
+}
+
+/* 區塊 B：照片縮小、貼齊右下角，左緣正好落在卡片中線，
+   從中線開始由透明淡入到實體，左半部維持乾淨。 */
+.j-card.j-card--fade-b .j-card__media {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  height: 74%;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,1) 78%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,1) 78%);
+}
+
+/* ---------- 純文字語錄卡 ---------- */
+.j-card--quote {
+  background: var(--accent-tint, #F1E4D3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.j-card__quote-text {
+  font-family: "Noto Serif TC", serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+/* ---------- 響應式：窄螢幕改回單欄堆疊 ---------- */
+@media (max-width: 900px) {
+  .journal-columns {
+    flex-direction: column;
+    padding: 24px 6vw 48px;
+  }
+  .j-col {
+    gap: 14px;
+  }
+  .j-col > .j-card,
+  .j-col--hero > .j-card--hero {
+    min-height: 200px;
+  }
+  .j-card__body,
+  .j-card--hero .j-card__body {
+    width: 54%;
+  }
+  .j-card__media {
+    width: 42%;
+  }
+}
