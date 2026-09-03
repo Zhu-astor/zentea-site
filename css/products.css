@@ -332,7 +332,7 @@ html, body.products-page {
   right: 0;
   bottom: 0;
   height: 46%;
-  background: url("/assets/img/landscape-1.png") no-repeat center bottom;
+  background: url("../assets/img/landscape-1.png") no-repeat center bottom;
   background-size: 132% auto;
   opacity: 0.2;
   pointer-events: none;
@@ -351,7 +351,7 @@ html, body.products-page {
   right: 0;
   top: 6%;
   bottom: 0;
-  background: url("/assets/img/landscape-1.png") no-repeat center 82%;
+  background: url("../assets/img/landscape-1.png") no-repeat center 82%;
   background-size: 128% auto;
   opacity: 0.16;
   pointer-events: none;
@@ -368,7 +368,7 @@ html, body.products-page {
   bottom: 12%;
   width: 34%;
   aspect-ratio: 493 / 505;
-  background: url("/assets/img/leaf-1.png") no-repeat center / contain;
+  background: url("../assets/img/leaf-1.png") no-repeat center / contain;
   opacity: 0.5;
   transform: rotate(8deg);
   pointer-events: none;
@@ -386,7 +386,7 @@ html, body.products-page {
   top: 28%;
   width: 28%;
   aspect-ratio: 493 / 505;
-  background: url("/assets/img/leaf-1.png") no-repeat center / contain;
+  background: url("../assets/img/leaf-1.png") no-repeat center / contain;
   opacity: 0.42;
   transform: scaleX(-1) rotate(6deg);
   pointer-events: none;
