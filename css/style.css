@@ -233,3 +233,63 @@ html, body {
     right: auto;
   }
 }
+/* =========================================
+   修正：首頁第一區塊山水圖放大 (佔版面 1/2 ~ 2/3)
+   ========================================= */
+@media (min-width: 992px) { /* 建議只在電腦版放大，避免手機版破版 */
+    #session-1 .session-asset {
+        /* 使用 vw (視窗寬度單位)，60vw 代表螢幕寬度的 60% */
+        width: 70vw !important; 
+        
+        /* 覆蓋掉全域圖片可能設定的 max-width: 100% */
+        max-width: none !important; 
+        
+        /* 保持原本的長寬比例 */
+        height: auto; 
+    }
+    
+    /* 確保文字區塊在圖片放大後不會被遮擋而無法點擊或閱讀 */
+    #session-1 .session-text {
+        position: relative;
+        z-index: 10;
+    }
+}
+/* =========================================
+   首頁：第五段詩句區塊 (2秒淡入特效)
+   ========================================= */
+.poem-session {
+    /* 繼承品牌理念的背景，這裡設為透明讓它自然融入底色 */
+    background-color: transparent; 
+    padding: 80px 4vw; /* 上下留白空間，可自行微調數字 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poem-container {
+    width: 100%;
+    max-width: 900px; /* 限制詩句圖片的最大寬度，讓它不會在全螢幕時過大 */
+    text-align: center;
+}
+
+.poem-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    
+    /* 初始狀態：完全透明 (0) */
+    opacity: 0; 
+    /* 預防性稍微往下位移一點點，浮現時會更有質感 (若不需要可刪除 transform) */
+    transform: translateY(20px); 
+    
+    /* 設定動畫：針對 opacity 和 transform 進行 2 秒的平滑過渡 */
+    transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+}
+
+/* 當 JS 偵測到滑動到位，加上 .is-visible 類別後觸發的最終狀態 */
+.poem-image.is-visible {
+    opacity: 1; /* 完全顯示 */
+    transform: translateY(0); /* 回到原位 */
+}
+

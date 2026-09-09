@@ -9,8 +9,36 @@
 </head>
 <body class="journal-page">
 
-<header class="journal-hero">
-  <img src="assets/img/journal-banner.png" alt="蟬茶日誌" class="journal-hero__img">
+<header class="journal-hero-bg">
+  <!-- 頂部導覽列 -->
+  <div class="top-nav">
+    <a href="index.html" class="logo">
+      <!-- 替換成你的去背 Logo 圖片，若暫無可用文字 <h2>蟬吃茶</h2> 代替 -->
+      <img src="assets/img/logo.png" alt="蟬吃茶">
+    </a>
+    
+    <nav class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="#">關於蟬吃茶</a>
+      <a href="products.html">產品介紹</a>
+      <a href="#">茶的日常</a>
+      <a href="journal.html" class="active">蟬吃誌</a>
+      <a href="#">門市據點</a>
+    </nav>
+    
+    <!-- 右側功能圖示 (會員、購物車、漢堡選單) 可先留空或放入你的圖示 -->
+    <div class="nav-icons">
+       <span>👤</span>
+       <span>🛍️</span>
+       <span>☰</span>
+    </div>
+  </div>
+
+  <!-- 大標題區塊 -->
+  <div class="hero-content">
+    <h1>蟬茶日誌</h1>
+    <p>把山林、茶香與生活裡的留白，慢慢寫下來。</p>
+  </div>
 </header>
 
 <main class="journal-columns">
@@ -24,9 +52,9 @@
       </div>
       <div class="j-card__media"><img src="assets/img/landscape-1.png" alt="玉山自然茶園"></div>
     </a>
-    <div class="j-card j-card--quote">
+    <!-- <div class="j-card j-card--quote">
       <p class="j-card__quote-text">順應天地的節律耕作，<br>與自然共生，<br>才有好茶。</p>
-    </div>
+    </div> -->
     <a class="j-card" href="article-3.html">
       <div class="j-card__body">
         <p class="j-card__eyebrow">沖泡指南</p>
@@ -35,6 +63,7 @@
       </div>
       <div class="j-card__media"><img src="assets/img/tea-figure-1.png" alt="冷泡茶泡茶方法"></div>
     </a>
+    
   </div>
 
   <div class="j-col j-col--hero">
@@ -78,8 +107,63 @@
 
 </main>
 
-<footer class="journal-footer">
-  <img src="assets/img/footer-banner.png" alt="蟬吃茶 頁尾" class="journal-footer__img">
+<footer class="site-footer-bg">
+  <div class="footer-container">
+    
+    <!-- 1. 最左側：Logo -->
+    <div class="footer-logo-col">
+      <!-- 注意：請確認你的 assets/img/ 裡面真的有 logo.png 這個檔案，否則會破圖 -->
+      <img src="assets/img/logo.png" alt="蟬吃茶 Logo" class="footer-logo">
+    </div>
+
+    <!-- 2. 正中間：連結欄位 -->
+    <div class="footer-links-group">
+      <div class="footer-col">
+        <h4>關於蟬吃茶</h4>
+        <a href="#">品牌故事</a>
+        <a href="#">門市資訊</a>
+        <a href="#">製茶師</a>
+      </div>
+      <div class="footer-col">
+        <h4>茶品知識</h4>
+        <a href="#">茶品介紹</a>
+        <a href="#">沖泡指南</a>
+      </div>
+      <div class="footer-col">
+        <h4>蟬吃誌</h4>
+        <a href="#">茶的日常</a>
+        <a href="#">產地故事</a>
+        <a href="#">茶知識</a>
+      </div>
+      <div class="footer-col">
+        <h4>購物</h4>
+        <a href="#">茶包</a>
+        <a href="#">茶葉</a>
+        <a href="#">茶具</a>
+        <a href="#">禮盒</a>
+      </div>
+      <div class="footer-col">
+        <h4>客服</h4>
+        <a href="#">常見問答</a>
+        <a href="#">聯絡我們</a>
+        <a href="#">LINE 官方帳號</a>
+      </div>
+    </div>
+
+    <!-- 3. 最右側：社群圖示 -->
+    <div class="footer-social-col">
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="assets/img/icon-fb.svg" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="assets/img/icon-ig.svg" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="assets/img/icon-line.svg" alt="LINE"></a>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="copyright">
+    © 2024 蟬吃茶 CHAN CHA TEA・版權所有
+  </div>
 </footer>
 
 </body>

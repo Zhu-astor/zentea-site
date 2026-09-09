@@ -78,6 +78,43 @@
     </figure>
   </div>
 </section>
+<!-- 原本的第四段：品牌理念結束 -->
+</section>
+
+<!-- ==================================== -->
+<!-- 第五段：詩句浮現區塊 (新增) -->
+<!-- ==================================== -->
+<section class="poem-session" id="session-5">
+  <div class="poem-container">
+    <!-- 確保圖片已經改名為 poem.png 並放入 assets/img/ 中 -->
+    <img class="poem-image" src="assets/img/poem.png" alt="茶禪詩句">
+  </div>
+</section>
+
+<!-- 專屬此詩句的 2秒淡入觸發腳本 -->
+<!-- 專屬此詩句的 2秒淡入觸發腳本 (已修正觸發時機) -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const poemImg = document.querySelector('.poem-image');
+    if (poemImg) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, { 
+        // 調整這兩個數值來改變觸發時機：
+        threshold: 0.5, 
+        rootMargin: "0px 0px -20% 0px" 
+      }); 
+      
+      observer.observe(poemImg);
+    }
+  });
+</script>
+<!-- ==================================== -->
 
 <!-- 之後的段落接續往下寫，這裡先留著當佔位，讓第四頁滾動時有內容可以滾出去 -->
 <section class="scroll-session placeholder-session">
