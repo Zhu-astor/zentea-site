@@ -336,3 +336,185 @@ html, body {
     opacity: 1; 
     transform: translateY(0); 
 }
+/* =========================================
+   全站共用：頂部橫幅 (背景圖 + HTML文字)
+   ========================================= */
+.journal-hero-bg {
+    background-image: url('../assets/img/first_up.png'); 
+    background-size: cover;
+    background-position: center bottom;
+    width: 100%;
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px 5vw;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    height: 40px; 
+}
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #4A4036;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+.nav-links a:hover, .nav-links a.active {
+    color: #9B3D38; 
+}
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.hero-content {
+    margin-top: 80px;
+    margin-left: 5vw;
+    color: #2c251d;
+}
+/* 原本的標題設定維持不動 */
+.hero-content h1 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 46px;
+    margin-bottom: 15px; /* 這個留著沒關係 */
+    font-weight: 700;
+}
+
+/* 👇 新增這段：讓標題跟印章橫向排列 */
+.title-with-seal {
+    display: flex;
+    align-items: center; /* 讓文字跟印章垂直置中對齊 */
+    gap: 15px;           /* 文字跟印章之間的距離 */
+    margin-bottom: 15px; /* 取代原本 h1 的底部距離 */
+}
+
+/* 消除包裹內 h1 多餘的底部距離，避免撐太開 */
+.title-with-seal h1 {
+    margin-bottom: 0;
+}
+
+/* 👇 新增這段：控制印章的大小 */
+.hero-seal {
+    height: 55px; /* 印章的高度，如果你覺得太大或太小，修改這個數字即可 */
+    width: auto;
+    object-fit: contain;
+}
+.hero-content p {
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    color: #554d44;
+}
+
+.site-footer-bg {
+    background-image: url('../assets/img/second_down.png'); 
+    background-size: 100% auto; 
+    background-position: top center; 
+    background-repeat: no-repeat;
+    background-color: #FAF8F4; 
+    
+    /* 👇 解決關鍵：改回 vw，讓推擠距離跟著圖片一起縮放 */
+    padding-top: 5vw; 
+    
+    padding-bottom: 40px;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    color: #4A4036;
+    font-family: "Noto Serif TC", serif;
+}
+
+
+.footer-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    max-width: 1400px;
+    margin: 0 auto 40px;
+}
+
+.footer-logo {
+    height: 45px; 
+    display: block;
+}
+
+.footer-links-group {
+    display: flex;
+    flex: 1;
+    justify-content: center; 
+}
+
+.footer-col {
+    padding: 0 3.5vw;
+    border-right: 1px solid rgba(0, 0, 0, 0.08); 
+}
+.footer-col:last-child {
+    border-right: none; 
+}
+
+.footer-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #2c251d;
+    letter-spacing: 0.05em;
+}
+
+.footer-col a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+.footer-col a:hover {
+    color: #9B3D38;
+}
+
+.social-icons {
+    display: flex;
+    gap: 16px;
+    padding-left: 20px;
+}
+.social-icons img {
+    width: 26px; 
+    height: 26px;
+    transition: all 0.3s ease;
+}
+.social-icons a:hover img {
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    padding-top: 20px;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .footer-links-group {
+        flex-wrap: wrap;
+        row-gap: 30px;
+    }
+    .footer-col {
+        border-right: none;
+        text-align: center;
+    }
+}
