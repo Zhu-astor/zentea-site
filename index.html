@@ -84,13 +84,67 @@
 <!-- ==================================== -->
 <!-- 第五段：詩句浮現區塊 (新增) -->
 <!-- ==================================== -->
-<section class="poem-session" id="session-5">
-  <div class="poem-container">
+<!-- <section class="poem-session" id="session-5"> -->
+  <!-- <div class="poem-container"> -->
     <!-- 確保圖片已經改名為 poem.png 並放入 assets/img/ 中 -->
-    <img class="poem-image" src="assets/img/poem.png" alt="茶禪詩句">
+    <!-- <img class="poem-image" src="assets/img/poem.png" alt="茶禪詩句"> -->
+  <!-- </div> -->
+<!-- </section> -->
+<!-- ==================================== -->
+<!-- 第五段：詩句浮現區塊 (多行依序由右至左) -->
+<!-- ==================================== -->
+<section class="poem-session" id="session-5">
+  <div class="poem-container-split">
+    <!-- 副檔名已全部統一修正為 .png -->
+    <img class="poem-line" src="assets/img/01.png" alt="第1句">
+    <img class="poem-line" src="assets/img/02.png" alt="第2句">
+    <img class="poem-line" src="assets/img/03.png" alt="第3句">
+    <img class="poem-line" src="assets/img/04.png" alt="第4句">
+    <img class="poem-line" src="assets/img/05.png" alt="第5句">
+    <img class="poem-line" src="assets/img/06.png" alt="第6句">
+    <img class="poem-line" src="assets/img/07.png" alt="第7句">
+    <img class="poem-line" src="assets/img/08.png" alt="第8句">
+    <img class="poem-line" src="assets/img/09.png" alt="第9句">
   </div>
 </section>
 
+<!-- 專屬此詩句的「逐行淡入」觸發腳本 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 觀察整個詩句容器
+    const container = document.querySelector('.poem-container-split');
+    
+    if (container) {
+      // 抓出裡面所有的單行詩句 (01 ~ 09)
+      const lines = container.querySelectorAll('.poem-line');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            
+            // 容器進入畫面後，用迴圈幫每一行設定「延遲出現」的時間
+            lines.forEach((line, index) => {
+              // 索引值(index) 0 是第一句，乘上 400ms = 0秒出現
+              // 索引值 1 是第二句，乘上 400ms = 0.4秒出現，依此類推
+              setTimeout(() => {
+                line.classList.add('is-visible');
+              }, index * 400); 
+            });
+
+            // 觸發一次後就解除觀察，避免滑上滑下重複閃爍
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, { 
+        threshold: 0.3, // 容器露出 30% 時觸發動畫
+        rootMargin: "0px 0px -10% 0px" 
+      }); 
+      
+      observer.observe(container);
+    }
+  });
+</script>
+<!-- ==================================== -->
 <!-- 專屬此詩句的 2秒淡入觸發腳本 -->
 <!-- 專屬此詩句的 2秒淡入觸發腳本 (已修正觸發時機) -->
 <script>

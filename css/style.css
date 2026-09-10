@@ -292,4 +292,47 @@ html, body {
     opacity: 1; /* 完全顯示 */
     transform: translateY(0); /* 回到原位 */
 }
+/* =========================================
+   首頁：第五段詩句區塊 (逐行由右至左浮現)
+   ========================================= */
+.poem-session {
+    /* 把原本的 #000 改成 transparent (透明)，它就會自然透出網頁原本的底色 */
+    background-color: transparent; 
+    padding: 80px 4vw; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
+.poem-container-split {
+    display: flex;
+    /* CSS 核心魔法：反向橫排！這會讓 HTML 裡的第一個元素 (01.jpg) 排在最右邊 */
+    flex-direction: row-reverse; 
+    justify-content: center;
+    align-items: center; /* 讓高低不一的圖片暫時垂直置中 */
+    width: 100%;
+    max-width: 1000px;
+}
+
+.poem-line {
+    display: block;
+    margin: 0;
+    padding: 0;
+    /* 讓 9 張圖片平分總寬度 */
+    width: 11%; 
+    height: auto; 
+    
+    /* 初始狀態：完全透明，並往下偏移 20px */
+    opacity: 0; 
+    transform: translateY(20px); 
+    
+    /* 動畫設定：1.2 秒平滑過渡 */
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* JS 加入 is-visible 類別後的狀態 */
+.poem-line.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
