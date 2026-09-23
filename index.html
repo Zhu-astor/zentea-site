@@ -6,44 +6,67 @@
 <title>蟬吃茶 ZenEaTea</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
+<body class="home-page">
+
+<div class="bg-scroll-guard">
+  <div class="home-bg-layer"></div>
+</div>
+
+<!-- ==================================== -->
+<!-- 第一段：動態首圖區塊 -->
+<!-- ==================================== -->
 <section class="scroll-session" id="session-1">
-  <div class="session-text" data-drift="left">
+  
+
+  <div class="session-text hero-text-adjust" data-drift="left">
     <p class="eyebrow">CHAN CHA TEA</p>
     <h1>好茶，<br>是生活裡的一口清晨。</h1>
     <p class="lede">在忙碌裡，為自己留一段慢下來的時光。</p>
   </div>
 
-  <img class="session-leaf" src="assets/img/leaf-1.png" alt="" data-drift="left">
-  <img class="session-asset" src="assets/img/landscape-1.png" alt="蟬吃茶 山水意象" data-drift="right" data-base-transform="translateY(-50%)">
+  <div class="hero-anim-container">
+    <div class="boat-wrapper">
+      <img src="assets/img/boat.png" alt="小船" class="layer-boat">
+    </div>
+    <div class="leaf-wrapper-left">
+      <img src="assets/img/right-leaf.png" alt="左景" class="layer-anim-left">
+    </div>
+    <div class="leaf-wrapper-right">
+      <img src="assets/img/left-leaf.png" alt="右景" class="layer-anim-right">
+    </div>
+  </div>
 </section>
 
+<!-- ==================================== -->
+<!-- 第二段：一口茶湯 -->
+<!-- ==================================== -->
 <section class="scroll-session" id="session-2">
   <div class="session-text session-text--right" data-drift="left">
     <p class="eyebrow">CHAN CHA TEA</p>
     <h1>一口茶湯，<br>是與自己的對話。</h1>
     <p class="lede">靜靜喝一口茶，讓時間慢下來，<br>聽見內心最真實的聲音。</p>
   </div>
-
   <img class="session-asset session-asset--left" src="assets/img/tea-figure-1.png" alt="蟬吃茶 品茶意象" data-drift="right" data-base-transform="translateY(-50%)">
 </section>
 
-<!-- 第三段：文字左、素材右，不做左右飄移，只隨捲動淡入淡出 -->
+<!-- ==================================== -->
+<!-- 第三段：一片葉子 -->
+<!-- ==================================== -->
 <section class="scroll-session" id="session-3" data-enter-at="0.55">
   <div class="session-text" data-drift="none">
     <p class="eyebrow">CHAN CHA TEA</p>
     <h1>一片葉子，<br>從山林開始。</h1>
     <p class="lede">好茶來自純淨土地，<br>日曬雨露、雲霧滋養，<br>自然孕育一抹清香。</p>
   </div>
-
   <img class="session-asset session-asset--fade" src="assets/img/landscape-2.png" alt="蟬吃茶 山林意象" data-drift="none" data-base-transform="translateY(-50%)">
 </section>
 
-<!-- 第四段：品牌理念，四項依序逐一浮現 -->
+<!-- ==================================== -->
+<!-- 第四段：品牌理念 -->
+<!-- ==================================== -->
 <section class="scroll-session" id="session-4" data-enter-at="0.6" data-stagger-count="4">
   <h2 class="ideas-title" data-drift="none" data-stagger="0">品牌理念</h2>
-
   <div class="ideas">
     <figure class="idea" data-drift="none" data-stagger="0">
       <img class="idea__icon" src="assets/img/idea-chan-crave.png" alt="饞吃茶">
@@ -52,7 +75,6 @@
         <p>好茶！<br>喝一口就令人愛上了</p>
       </figcaption>
     </figure>
-
     <figure class="idea" data-drift="none" data-stagger="1">
       <img class="idea__icon" src="assets/img/idea-chan-cicada.png" alt="蟬吃茶">
       <figcaption class="idea__text">
@@ -60,7 +82,6 @@
         <p>蟬吃系列<br>友善生物、大地及自己<br>一杯蟬吃過的好茶<br>純樸、自然、健康</p>
       </figcaption>
     </figure>
-
     <figure class="idea" data-drift="none" data-stagger="2">
       <img class="idea__icon" src="assets/img/idea-chan-zen.png" alt="禪吃茶">
       <figcaption class="idea__text">
@@ -68,7 +89,6 @@
         <p>喝上一杯蟬吃好茶<br>寧靜、專注的感受當下</p>
       </figcaption>
     </figure>
-
     <figure class="idea" data-drift="none" data-stagger="3">
       <img class="idea__icon" src="assets/img/idea-chan-stream.png" alt="潺吃茶">
       <figcaption class="idea__text">
@@ -78,24 +98,12 @@
     </figure>
   </div>
 </section>
-<!-- 原本的第四段：品牌理念結束 -->
-</section>
 
 <!-- ==================================== -->
-<!-- 第五段：詩句浮現區塊 (新增) -->
-<!-- ==================================== -->
-<!-- <section class="poem-session" id="session-5"> -->
-  <!-- <div class="poem-container"> -->
-    <!-- 確保圖片已經改名為 poem.png 並放入 assets/img/ 中 -->
-    <!-- <img class="poem-image" src="assets/img/poem.png" alt="茶禪詩句"> -->
-  <!-- </div> -->
-<!-- </section> -->
-<!-- ==================================== -->
-<!-- 第五段：詩句浮現區塊 (多行依序由右至左) -->
+<!-- 第五段：詩句浮現區塊 -->
 <!-- ==================================== -->
 <section class="poem-session" id="session-5">
   <div class="poem-container-split">
-    <!-- 副檔名已全部統一修正為 .png -->
     <img class="poem-line" src="assets/img/01.png" alt="第1句">
     <img class="poem-line" src="assets/img/02.png" alt="第2句">
     <img class="poem-line" src="assets/img/03.png" alt="第3句">
@@ -108,73 +116,126 @@
   </div>
 </section>
 
-<!-- 專屬此詩句的「逐行淡入」觸發腳本 -->
+<!-- 🌟 關鍵修復 3：補回完美的 Footer -->
+<footer class="site-footer-bg">
+  <div class="footer-container">
+    <div class="footer-logo-col">
+      <img src="assets/img/logo.png" alt="蟬吃茶 Logo" class="footer-logo">
+    </div>
+    <div class="footer-links-group">
+      <div class="footer-col">
+        <h4>關於蟬吃茶</h4>
+        <a href="#">品牌故事</a>
+        <a href="#">門市資訊</a>
+        <a href="#">製茶師</a>
+      </div>
+      <div class="footer-col">
+        <h4>茶品知識</h4>
+        <a href="#">茶品介紹</a>
+        <a href="#">沖泡指南</a>
+      </div>
+      <div class="footer-col">
+        <h4>蟬吃誌</h4>
+        <a href="#">茶的日常</a>
+        <a href="#">產地故事</a>
+        <a href="#">茶知識</a>
+      </div>
+      <div class="footer-col">
+        <h4>購物</h4>
+        <a href="#">茶包</a>
+        <a href="#">茶葉</a>
+        <a href="#">茶具</a>
+        <a href="#">禮盒</a>
+      </div>
+      <div class="footer-col">
+        <h4>客服</h4>
+        <a href="#">常見問答</a>
+        <a href="#">聯絡我們</a>
+        <a href="#">LINE 官方帳號</a>
+      </div>
+    </div>
+    <div class="footer-social-col">
+      <div class="social-icons">
+        <a href="#" target="_blank"><img src="assets/img/icon-fb.svg" alt="Facebook"></a>
+        <a href="#" target="_blank"><img src="assets/img/icon-ig.svg" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="assets/img/icon-line.svg" alt="LINE"></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2024 蟬吃茶 CHAN CHA TEA・版權所有
+  </div>
+</footer>
+
+<!-- ==================================== -->
+<!-- 1. 詩句由右至左浮現腳本 (提早觸發超敏銳版) -->
+<!-- ==================================== -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // 觀察整個詩句容器
     const container = document.querySelector('.poem-container-split');
-    
     if (container) {
-      // 抓出裡面所有的單行詩句 (01 ~ 09)
       const lines = container.querySelectorAll('.poem-line');
-      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            
-            // 容器進入畫面後，用迴圈幫每一行設定「延遲出現」的時間
             lines.forEach((line, index) => {
-              // 索引值(index) 0 是第一句，乘上 400ms = 0秒出現
-              // 索引值 1 是第二句，乘上 400ms = 0.4秒出現，依此類推
               setTimeout(() => {
                 line.classList.add('is-visible');
               }, index * 400); 
             });
-
-            // 觸發一次後就解除觀察，避免滑上滑下重複閃爍
             observer.unobserve(entry.target); 
           }
         });
       }, { 
-        threshold: 0.3, // 容器露出 30% 時觸發動畫
-        rootMargin: "0px 0px -10% 0px" 
+        threshold: 0.05,        /* 🌟 只要區塊露出一點點(5%)就立刻觸發 */
+        rootMargin: "100px 0px" /* 🌟 提早 100px 觸發 */
       }); 
-      
       observer.observe(container);
     }
   });
 </script>
+
 <!-- ==================================== -->
-<!-- 專屬此詩句的 2秒淡入觸發腳本 -->
-<!-- 專屬此詩句的 2秒淡入觸發腳本 (已修正觸發時機) -->
+<!-- 2. 全新特效腳本：高幀率流暢版 (防卡頓視差滾動) -->
+<!-- ==================================== -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const poemImg = document.querySelector('.poem-image');
-    if (poemImg) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); 
-          }
-        });
-      }, { 
-        // 調整這兩個數值來改變觸發時機：
-        threshold: 0.5, 
-        rootMargin: "0px 0px -20% 0px" 
-      }); 
+    const bgLayer = document.querySelector('.home-bg-layer');
+    const boatWrapper = document.querySelector('.boat-wrapper');
+    const leafLeft = document.querySelector('.leaf-wrapper-left');
+    const leafRight = document.querySelector('.leaf-wrapper-right');
+
+    let ticking = false; // 運算紅綠燈，防止滾動時塞車卡頓
+
+    window.addEventListener('scroll', function() {
+      let scrollY = window.scrollY;
       
-      observer.observe(poemImg);
-    }
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          
+          // 1. 底圖與船「往內放大」
+          let scaleValue = 1 + (scrollY * 0.00015); 
+          if (bgLayer) bgLayer.style.transform = `scale(${scaleValue})`;
+          if (boatWrapper) boatWrapper.style.transform = `scale(${scaleValue})`;
+
+          // 2. 左右葉子外盒「往外離開」
+          let moveLeft = -(scrollY * 0.3); 
+          let moveRight = (scrollY * 0.3);
+          
+          if (leafLeft) leafLeft.style.transform = `translateX(${moveLeft}px)`;
+          if (leafRight) leafRight.style.transform = `translateX(${moveRight}px)`;
+
+          ticking = false; 
+        });
+        
+        ticking = true; 
+      }
+    });
   });
 </script>
-<!-- ==================================== -->
 
-<!-- 之後的段落接續往下寫，這裡先留著當佔位，讓第四頁滾動時有內容可以滾出去 -->
-<section class="scroll-session placeholder-session">
-  <div class="placeholder-note">下一段接續製作中</div>
-</section>
-
+<!-- 匯入你的 main.js，確保原本的左右滑動特效運作 -->
 <script src="js/main.js"></script>
+
 </body>
 </html>

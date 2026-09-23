@@ -518,3 +518,123 @@ html, body {
         text-align: center;
     }
 }
+/* =========================================
+   首頁：直式大底圖與進階視差滾動特效 (防卡頓終極版)
+   ========================================= */
+
+body.home-page {
+    position: relative; 
+    background-color: #FAF8F4 !important;
+    background-image: none !important;
+    overflow-x: hidden; 
+}
+
+/* 🌟 修正：把 z-index 改為 0，才不會被 body 的底色活埋！ */
+.bg-scroll-guard {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    overflow: hidden; 
+    z-index: 0; 
+}
+
+/* 直式大底圖 */
+.home-bg-layer {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%; 
+    background-image: url('../assets/img/bg-main.png');
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    transform-origin: top center;
+    will-change: transform; 
+}
+
+/* 🌟 修正：把所有內容區塊的層級拉高到 10，穩穩壓在底圖之上 */
+.scroll-session, .poem-session {
+    position: relative;
+    z-index: 10; 
+    background-color: transparent !important;
+}
+
+.hero-anim-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; 
+    z-index: 2; 
+    overflow: hidden; 
+}
+
+/* ========================================= */
+/* 遙控器：自由調整船與左右葉子的位置與大小 */
+/* ========================================= */
+.boat-wrapper {
+    position: absolute;
+    bottom: 5%; 
+    left: 50%;   
+    width: 15vw; 
+    min-width: 120px;
+    transform-origin: center bottom;
+    will-change: transform;
+}
+.layer-boat {
+    width: 100%;
+    transform: translateX(-50%); 
+}
+
+.leaf-wrapper-left {
+    position: absolute;
+    top: 65%; 
+    left: 0; 
+    width: 30%; 
+    min-width: 150px;
+    will-change: transform;
+}
+.layer-anim-left { width: 100%; }
+
+.leaf-wrapper-right {
+    position: absolute;
+    top: 65%; 
+    right: 0; 
+    width: 20%; 
+    min-width: 120px;
+    will-change: transform;
+}
+.layer-anim-right { width: 100%; }
+
+/* =========================================
+   第五段：詩句特效與排版 (恢復正常動畫版)
+   ========================================= */
+.poem-session {
+    position: relative;
+    z-index: 9999; 
+    padding: 15vh 4vw; 
+    min-height: 50vh; 
+}
+
+.poem-container-split {
+    display: flex;
+    flex-direction: row-reverse; 
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+    flex-wrap: wrap; 
+}
+
+/* 🌟 2. 恢復動畫起始狀態：透明、下沉 (已移除 !important) */
+.poem-line {
+    opacity: 0; 
+    transform: translateY(40px); 
+    transition: opacity 1.5s ease, transform 1.5s ease; 
+    height: 45vh; 
+    min-height: 250px; 
+    width: auto;
+    object-fit: contain;
+}
+
+/* 🌟 動畫終點狀態：完全顯示、回原位 */
+.poem-line.is-visible {
+    opacity: 1; 
+    transform: translateY(0); 
+}
