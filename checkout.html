@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>結帳 | 蟬吃茶 ZenEaTea</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="products-page checkout-page">
+
+<div class="c-wrap">
+  <header class="c-head">
+    <a href="index.html" class="c-head__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+    <a href="cart.html" class="c-head__back">← 回購物車</a>
+  </header>
+
+  <h1 class="c-title">結帳</h1>
+
+  <p class="c-status" data-checkout-status>正在確認購物車內容…</p>
+
+  <form class="c-layout co" data-checkout-form novalidate hidden>
+    <div class="co__main">
+      <p class="co__alert" data-error="cart" hidden></p>
+
+      <fieldset class="co__section">
+        <legend class="co__legend">訂購人資料</legend>
+        <div class="co__field">
+          <label for="customer_name">姓名</label>
+          <input id="customer_name" name="customer_name" autocomplete="name" maxlength="50" required>
+          <p class="co__error" data-error="customer_name" hidden></p>
+        </div>
+        <div class="co__row">
+          <div class="co__field">
+            <label for="customer_phone">手機</label>
+            <input id="customer_phone" name="customer_phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="0912345678" maxlength="20" required>
+            <p class="co__error" data-error="customer_phone" hidden></p>
+          </div>
+          <div class="co__field">
+            <label for="customer_email">Email</label>
+            <input id="customer_email" name="customer_email" type="email" autocomplete="email" maxlength="254" required>
+            <p class="co__hint">訂單通知會寄到這個信箱</p>
+            <p class="co__error" data-error="customer_email" hidden></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="co__section">
+        <legend class="co__legend">收件人資料</legend>
+        <label class="p-check co__same">
+          <input type="checkbox" name="receiver_same" checked data-receiver-same> 收件人同訂購人
+        </label>
+        <div class="co__row" data-receiver-fields hidden>
+          <div class="co__field">
+            <label for="receiver_name">收件人姓名</label>
+            <input id="receiver_name" name="receiver_name" autocomplete="shipping name" maxlength="50">
+            <p class="co__error" data-error="receiver_name" hidden></p>
+          </div>
+          <div class="co__field">
+            <label for="receiver_phone">收件人手機</label>
+            <input id="receiver_phone" name="receiver_phone" type="tel" autocomplete="shipping tel" inputmode="tel" placeholder="0912345678" maxlength="20">
+            <p class="co__error" data-error="receiver_phone" hidden></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="co__section">
+        <legend class="co__legend">配送與付款方式</legend>
+        <p class="co__pending">線上付款與配送方式準備中，開放後會在這裡選擇超商取貨或宅配，以及付款方式。</p>
+      </fieldset>
+
+      <fieldset class="co__section">
+        <legend class="co__legend">備註 <span class="co__optional">（選填）</span></legend>
+        <div class="co__field">
+          <label for="note" class="sr-only">備註</label>
+          <textarea id="note" name="note" rows="3" maxlength="500" placeholder="想告訴我們的事，例如送禮需求"></textarea>
+          <p class="co__error" data-error="note" hidden></p>
+        </div>
+      </fieldset>
+    </div>
+
+    <aside class="c-summary">
+      <p class="co__summary-title">訂單內容</p>
+      <ul class="co__items" data-checkout-items></ul>
+      <div class="c-summary__row">
+        <span>商品小計</span>
+        <span data-checkout-subtotal>NT$0</span>
+      </div>
+      <div class="c-summary__row c-summary__row--muted">
+        <span>運費</span>
+        <span>選擇配送方式後計算</span>
+      </div>
+      <button type="submit" class="c-checkout" data-checkout-submit>確認資料</button>
+      <p class="co__success" data-checkout-success hidden>資料確認完成。線上付款開放後，就能在這裡完成下單。</p>
+      <p class="c-summary__note">付款功能準備中，目前不會建立訂單或收款</p>
+    </aside>
+  </form>
+
+  <div class="c-empty" data-checkout-empty hidden>
+    <img src="assets/img/leaf-1.png" alt="" class="c-empty__icon">
+    <p>購物車裡還沒有茶</p>
+    <a href="products.html" class="p-card__cta c-empty__cta">去逛逛茶品</a>
+  </div>
+</div>
+
+<script src="js/cart.js"></script>
+<script src="js/checkout-page.js"></script>
+</body>
+</html>

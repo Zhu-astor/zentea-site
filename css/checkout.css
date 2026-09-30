@@ -1,0 +1,150 @@
+/* 結帳頁樣式。版面骨架、訂單摘要沿用 cart.css（c-layout、c-summary、c-checkout）。 */
+
+.co__main { min-width: 0; }
+
+.co__section {
+  border: 0;
+  padding: 0 0 26px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.co__section:last-child { border-bottom: 0; }
+
+.co__legend {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.co__optional {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.co__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.co__row[hidden] { display: none; }
+
+.co__field { margin-bottom: 14px; }
+
+.co__field label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.co__field input,
+.co__field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* 小於 16px 時 iOS 點輸入框會自動放大畫面 */
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #CFC4B4;
+  border-radius: 2px;
+  padding: 10px 12px;
+}
+
+.co__field input:focus,
+.co__field textarea:focus {
+  outline: none;
+  border-color: var(--leaf-deep);
+  box-shadow: 0 0 0 1px var(--leaf-deep);
+}
+
+.co__field [aria-invalid="true"],
+.co__field [aria-invalid="true"]:focus { border-color: var(--seal); }
+
+.co__field [aria-invalid="true"]:focus { box-shadow: 0 0 0 1px var(--seal); }
+
+.co__field textarea { resize: vertical; min-height: 84px; }
+
+.co__hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+.co__error, .co__alert {
+  font-size: 12px;
+  color: var(--seal);
+  margin-top: 6px;
+}
+
+.co__alert {
+  font-size: 13px;
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  background: #FBF1EE;
+  border: 1px solid #E8C9C0;
+  border-radius: 4px;
+}
+
+.co__alert[hidden], .co__error[hidden] { display: none; }
+
+.co__same { margin-bottom: 14px; }
+
+.co__pending {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+  padding: 14px 16px;
+  background: #F6F2EA;
+  border-radius: 4px;
+}
+
+.co__summary-title {
+  font-family: "Noto Serif TC", serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.co__items {
+  list-style: none;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.co__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  padding: 5px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.co__item.has-problem span:last-child { color: var(--seal); }
+
+.co__success {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--leaf-deep);
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #F3F6EC;
+  border-radius: 4px;
+}
+
+.co__success[hidden] { display: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .co__row { grid-template-columns: 1fr; }
+}

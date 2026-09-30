@@ -1,0 +1,159 @@
+/* 商品頁樣式。版頭、數量選擇、按鈕沿用 cart.css（c-head、c-qty、c-checkout）。 */
+
+.pd {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.pd[hidden] { display: none; }
+
+.pd__media {
+  position: sticky;
+  top: 24px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.pd__media img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pd__tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 22px;
+}
+
+/* 卡片標籤原本是絕對定位疊在圖上，這裡改成一般排版 */
+.pd__tag.p-card__tag { position: static; }
+
+.pd__category {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.pd__name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  margin-top: 14px;
+}
+
+.pd__summary {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+.pd__price {
+  font-size: 22px;
+  margin: 18px 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pd__field { margin-top: 22px; }
+
+.pd__field[hidden] { display: none; }
+
+.pd__field .p-label { margin-bottom: 10px; }
+
+.pd__variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pd__variant {
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid #CFC4B4;
+  border-radius: 2px;
+  padding: 9px 18px;
+  cursor: pointer;
+}
+
+.pd__variant:hover:not(:disabled) { border-color: var(--leaf-light); }
+
+.pd__variant.is-selected {
+  border-color: var(--leaf-deep);
+  box-shadow: inset 0 0 0 1px var(--leaf-deep);
+  color: var(--leaf-deep);
+}
+
+.pd__variant:disabled {
+  color: #B8B0A4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.pd__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.pd__actions .pd__add { width: auto; flex: 1 1 auto; max-width: 280px; margin-top: 0; }
+
+.pd__to-cart {
+  font-size: 13px;
+  color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.pd__to-cart:hover { color: var(--leaf-deep); }
+
+.pd__section-title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pd__notes, .pd__desc { margin-top: 40px; }
+
+.pd__notes[hidden], .pd__desc[hidden] { display: none; }
+
+.pd__notes-list {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  row-gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pd__notes-list dt { color: var(--muted); }
+
+.pd__desc-body p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+.pd__desc-body p + p { margin-top: 12px; }
+
+@media (max-width: 760px) {
+  .pd { grid-template-columns: 1fr; gap: 24px; }
+  .pd__media { position: static; padding: 20px; }
+  .pd__name { font-size: 23px; }
+  .pd__actions .pd__add { max-width: none; }
+}

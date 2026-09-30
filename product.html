@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茶品介紹 | 蟬吃茶 ZenEaTea</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/product.css">
+</head>
+<body class="products-page product-page">
+
+<div class="c-wrap">
+  <header class="c-head">
+    <a href="index.html" class="c-head__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+    <div class="c-head__nav">
+      <a href="products.html" class="c-head__back">← 全部茶品</a>
+      <a href="cart.html" class="cart-fab cart-fab--inline">購物車 <span class="cart-fab__count" data-cart-count hidden>0</span></a>
+    </div>
+  </header>
+
+  <p class="c-status" data-product-status>載入中…</p>
+
+  <article class="pd" data-product hidden>
+    <div class="pd__media">
+      <img data-field="image" alt="">
+    </div>
+
+    <div class="pd__info">
+      <div class="pd__tags">
+        <span class="p-card__tag pd__tag" data-field="flavor" hidden></span>
+        <span class="pd__category" data-field="category" hidden></span>
+      </div>
+      <h1 class="pd__name" data-field="name"></h1>
+      <p class="pd__summary" data-field="summary"></p>
+      <p class="pd__price" data-field="price"></p>
+
+      <div class="pd__field" data-variant-field>
+        <p class="p-label">規格</p>
+        <div class="pd__variants" data-variants role="radiogroup" aria-label="規格"></div>
+      </div>
+
+      <div class="pd__field">
+        <p class="p-label">數量</p>
+        <div class="c-qty">
+          <button type="button" class="c-qty__btn" data-step="-1" aria-label="減少數量">−</button>
+          <input type="number" class="c-qty__input" value="1" min="1" max="99" inputmode="numeric" aria-label="數量" data-qty>
+          <button type="button" class="c-qty__btn" data-step="1" aria-label="增加數量">+</button>
+        </div>
+      </div>
+
+      <div class="pd__actions">
+        <button type="button" class="c-checkout pd__add" data-add>加入購物車</button>
+        <a href="cart.html" class="pd__to-cart">查看購物車</a>
+      </div>
+
+      <section class="pd__notes" data-notes hidden>
+        <h2 class="pd__section-title">風味筆記</h2>
+        <dl class="pd__notes-list" data-notes-list></dl>
+      </section>
+
+      <section class="pd__desc" data-desc-section hidden>
+        <h2 class="pd__section-title">關於這款茶</h2>
+        <div class="pd__desc-body" data-field="description"></div>
+      </section>
+    </div>
+  </article>
+
+  <div class="c-empty" data-product-missing hidden>
+    <img src="assets/img/leaf-1.png" alt="" class="c-empty__icon">
+    <p>找不到這款茶，可能已經下架了</p>
+    <a href="products.html" class="p-card__cta c-empty__cta">看看其他茶品</a>
+  </div>
+</div>
+
+<script src="js/cart.js"></script>
+<script src="js/product-page.js"></script>
+</body>
+</html>

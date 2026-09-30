@@ -127,5 +127,9 @@
   });
   document.addEventListener("DOMContentLoaded", updateBadges);
 
-  window.ZenteaCart = { add, setQty, remove, items, count, quote, fetchProducts, toast, formatPrice, updateBadges, MAX_QTY };
+  window.ZenteaCart = {
+    add, setQty, remove, items, count, quote, fetchProducts, toast, formatPrice, updateBadges,
+    MAX_QTY,
+    apiBase: API_BASE,
+  };
 })();

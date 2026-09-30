@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
       list.replaceChildren(...data.items.map(renderLine));
       $("[data-cart-subtotal]").textContent = cart.formatPrice(data.subtotal);
       $("[data-cart-warn]").hidden = !data.has_problems;
+      // 有商品無法購買時不能前往結帳
+      $("[data-cart-checkout]").classList.toggle("is-disabled", data.has_problems);
+      $("[data-cart-checkout]").setAttribute("aria-disabled", data.has_problems);
       status.hidden = true;
       empty.hidden = true;
       layout.hidden = false;
@@ -81,6 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
       layout.hidden = true;
     }
   }
+
+  $("[data-cart-checkout]").addEventListener("click", (e) => {
+    if (e.currentTarget.classList.contains("is-disabled")) e.preventDefault();
+  });
 
   render();
 });

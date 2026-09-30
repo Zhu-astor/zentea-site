@@ -481,6 +481,23 @@ html, body.products-page {
   height: auto;
 }
 
+/* ---------- 篩選狀態 ---------- */
+/* 選中的風味標籤：外圈加一道墨色框線（膠囊本身已有底色，不改色以免跟卡片標籤混淆） */
+.p-pill.is-active {
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--ink);
+}
+
+.p-empty {
+  padding: 56px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.p-empty[hidden] { display: none; }
+
+.p-empty .p-clear { margin-top: 16px; width: auto; padding-left: 28px; padding-right: 28px; }
+
 /* ---------- 響應式 ---------- */
 @media (max-width: 1080px) {
   .p-grid { grid-template-columns: repeat(2, 1fr); }

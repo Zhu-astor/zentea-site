@@ -24,8 +24,8 @@
 
       <div class="p-search">
         <p class="p-label">搜尋茶品名稱</p>
-        <input type="text" class="p-search__input" placeholder="輸入關鍵字" aria-label="搜尋茶品名稱">
-        <button type="button" class="p-search__btn" aria-label="搜尋">
+        <input type="search" class="p-search__input" placeholder="輸入關鍵字" aria-label="搜尋茶品名稱" data-filter-keyword>
+        <button type="button" class="p-search__btn" aria-label="搜尋" data-filter-search>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
@@ -35,20 +35,20 @@
 
       <div class="p-group">
         <p class="p-label">分類</p>
-        <label class="p-check"><input type="checkbox"> 茶包</label>
-        <label class="p-check"><input type="checkbox"> 茶葉</label>
-        <label class="p-check"><input type="checkbox"> 茶具</label>
-        <label class="p-check"><input type="checkbox"> 禮盒</label>
+        <label class="p-check"><input type="checkbox" name="category" value="tea_bag"> 茶包</label>
+        <label class="p-check"><input type="checkbox" name="category" value="tea_leaf"> 茶葉</label>
+        <label class="p-check"><input type="checkbox" name="category" value="teaware"> 茶具</label>
+        <label class="p-check"><input type="checkbox" name="category" value="gift_set"> 禮盒</label>
       </div>
 
       <div class="p-group">
         <p class="p-label">風味</p>
-        <label class="p-check"><input type="checkbox"> 濃郁 Rich</label>
-        <label class="p-check"><input type="checkbox"> 均衡 Balance</label>
-        <label class="p-check"><input type="checkbox"> 清爽 Light</label>
+        <label class="p-check"><input type="checkbox" name="flavor" value="rich"> 濃郁 Rich</label>
+        <label class="p-check"><input type="checkbox" name="flavor" value="balance"> 均衡 Balance</label>
+        <label class="p-check"><input type="checkbox" name="flavor" value="light"> 清爽 Light</label>
       </div>
 
-      <button type="button" class="p-clear">清除篩選</button>
+      <button type="button" class="p-clear" data-filter-clear>清除篩選</button>
 
       <img src="assets/img/leaf-1.png" alt="" class="p-side-deco">
     </aside>
@@ -57,24 +57,24 @@
     <section class="p-main">
       <div class="p-main-head">
         <h1 class="p-main-head__title">全部茶品</h1>
-        <select class="p-sort" aria-label="排序方式">
-          <option>精選推薦</option>
-          <option>價格由低至高</option>
-          <option>價格由高至低</option>
-          <option>最新上架</option>
+        <select class="p-sort" aria-label="排序方式" data-filter-sort>
+          <option value="featured">精選推薦</option>
+          <option value="price_asc">價格由低至高</option>
+          <option value="price_desc">價格由高至低</option>
+          <option value="newest">最新上架</option>
         </select>
       </div>
 
       <div class="p-strength">
         <span class="p-strength__label">風味強度</span>
-        <button type="button" class="p-pill p-pill--rich">濃郁</button>
-        <button type="button" class="p-pill p-pill--balance">均衡</button>
-        <button type="button" class="p-pill p-pill--light">清爽</button>
+        <button type="button" class="p-pill p-pill--rich" data-flavor="rich" aria-pressed="false">濃郁</button>
+        <button type="button" class="p-pill p-pill--balance" data-flavor="balance" aria-pressed="false">均衡</button>
+        <button type="button" class="p-pill p-pill--light" data-flavor="light" aria-pressed="false">清爽</button>
       </div>
 
-      <div class="p-grid">
+      <div class="p-grid" data-product-grid>
 
-        <a class="p-card" href="product-honey-black.html" data-sku="HONEY-BLACK">
+        <a class="p-card" href="product.html?slug=honey-black" data-sku="HONEY-BLACK">
           <span class="p-card__tag p-card__tag--rich">濃郁</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -95,7 +95,7 @@
           </div>
         </a>
 
-        <a class="p-card" href="product-gaba.html" data-sku="GABA">
+        <a class="p-card" href="product.html?slug=gaba" data-sku="GABA">
           <span class="p-card__tag p-card__tag--balance">均衡</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -116,7 +116,7 @@
           </div>
         </a>
 
-        <a class="p-card" href="product-fresh-oolong.html" data-sku="FRESH-OOLONG">
+        <a class="p-card" href="product.html?slug=fresh-oolong" data-sku="FRESH-OOLONG">
           <span class="p-card__tag p-card__tag--light">清爽</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -137,7 +137,7 @@
           </div>
         </a>
 
-        <a class="p-card" href="product-yushan-oolong.html" data-sku="YUSHAN-OOLONG">
+        <a class="p-card" href="product.html?slug=yushan-oolong" data-sku="YUSHAN-OOLONG">
           <span class="p-card__tag p-card__tag--rich">濃郁</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -158,6 +158,11 @@
           </div>
         </a>
 
+      </div>
+
+      <div class="p-empty" data-product-empty hidden>
+        <p>找不到符合條件的茶品</p>
+        <button type="button" class="p-clear" data-filter-clear>清除篩選</button>
       </div>
     </section>
 
