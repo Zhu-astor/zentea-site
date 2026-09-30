@@ -6,8 +6,11 @@
 <title>全部茶品 | 蟬吃茶 ZenEaTea</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
 </head>
 <body class="products-page">
+
+<a href="cart.html" class="cart-fab">購物車 <span class="cart-fab__count" data-cart-count hidden>0</span></a>
 
 <div class="p-wrap">
   <div class="p-layout">
@@ -71,7 +74,7 @@
 
       <div class="p-grid">
 
-        <a class="p-card" href="product-honey-black.html">
+        <a class="p-card" href="product-honey-black.html" data-sku="HONEY-BLACK">
           <span class="p-card__tag p-card__tag--rich">濃郁</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -85,11 +88,14 @@
             <p class="p-card__desc">小綠葉蟬的天然蜜果香</p>
             <h3 class="p-card__name">蟬吃蜜香紅茶</h3>
             <p class="p-card__price">NT$480</p>
-            <span class="p-card__cta">了解更多</span>
+            <div class="p-card__actions">
+              <span class="p-card__cta">了解更多</span>
+              <button type="button" class="p-card__add" data-add-to-cart>加入購物車</button>
+            </div>
           </div>
         </a>
 
-        <a class="p-card" href="product-gaba.html">
+        <a class="p-card" href="product-gaba.html" data-sku="GABA">
           <span class="p-card__tag p-card__tag--balance">均衡</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -103,11 +109,14 @@
             <p class="p-card__desc">厭氧發酵・安定心神</p>
             <h3 class="p-card__name">蟬吃佳葉龍茶</h3>
             <p class="p-card__price">NT$520</p>
-            <span class="p-card__cta">了解更多</span>
+            <div class="p-card__actions">
+              <span class="p-card__cta">了解更多</span>
+              <button type="button" class="p-card__add" data-add-to-cart>加入購物車</button>
+            </div>
           </div>
         </a>
 
-        <a class="p-card" href="product-fresh-oolong.html">
+        <a class="p-card" href="product-fresh-oolong.html" data-sku="FRESH-OOLONG">
           <span class="p-card__tag p-card__tag--light">清爽</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -121,11 +130,14 @@
             <p class="p-card__desc">輕發酵中烘焙・清香甘潤</p>
             <h3 class="p-card__name">蟬吃鮮翠烏龍茶</h3>
             <p class="p-card__price">NT$450</p>
-            <span class="p-card__cta">了解更多</span>
+            <div class="p-card__actions">
+              <span class="p-card__cta">了解更多</span>
+              <button type="button" class="p-card__add" data-add-to-cart>加入購物車</button>
+            </div>
           </div>
         </a>
 
-        <a class="p-card" href="product-yushan-oolong.html">
+        <a class="p-card" href="product-yushan-oolong.html" data-sku="YUSHAN-OOLONG">
           <span class="p-card__tag p-card__tag--rich">濃郁</span>
           <button type="button" class="p-card__wish" aria-label="加入收藏">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -139,7 +151,10 @@
             <p class="p-card__desc">高山雲霧・葉厚耐泡</p>
             <h3 class="p-card__name">蟬吃玉山烏龍茶</h3>
             <p class="p-card__price">NT$680</p>
-            <span class="p-card__cta">了解更多</span>
+            <div class="p-card__actions">
+              <span class="p-card__cta">了解更多</span>
+              <button type="button" class="p-card__add" data-add-to-cart>加入購物車</button>
+            </div>
           </div>
         </a>
 
@@ -154,5 +169,7 @@
 </div>
 
 
+<script src="js/cart.js"></script>
+<script src="js/products.js"></script>
 </body>
 </html>

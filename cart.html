@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>購物車 | 蟬吃茶 ZenEaTea</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+<body class="products-page cart-page">
+
+<div class="c-wrap">
+  <header class="c-head">
+    <a href="index.html" class="c-head__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+    <a href="products.html" class="c-head__back">← 繼續選購</a>
+  </header>
+
+  <h1 class="c-title">購物車</h1>
+
+  <p class="c-status" data-cart-status>正在確認最新價格與庫存…</p>
+
+  <div class="c-layout" data-cart-layout hidden>
+    <ul class="c-list" data-cart-list></ul>
+
+    <aside class="c-summary">
+      <div class="c-summary__row">
+        <span>商品小計</span>
+        <span data-cart-subtotal>NT$0</span>
+      </div>
+      <div class="c-summary__row c-summary__row--muted">
+        <span>運費</span>
+        <span>結帳時計算</span>
+      </div>
+      <p class="c-summary__warn" data-cart-warn hidden>部分商品目前無法購買，請先調整數量或移除</p>
+      <button type="button" class="c-checkout" disabled>前往結帳</button>
+      <p class="c-summary__note">線上結帳功能準備中，敬請期待</p>
+    </aside>
+  </div>
+
+  <div class="c-empty" data-cart-empty hidden>
+    <img src="assets/img/leaf-1.png" alt="" class="c-empty__icon">
+    <p>購物車裡還沒有茶</p>
+    <a href="products.html" class="p-card__cta c-empty__cta">去逛逛茶品</a>
+  </div>
+</div>
+
+<template id="cart-line">
+  <li class="c-line">
+    <img class="c-line__img" alt="">
+    <div class="c-line__info">
+      <p class="c-line__name"></p>
+      <p class="c-line__variant"></p>
+      <p class="c-line__price"></p>
+      <p class="c-line__problem" hidden></p>
+    </div>
+    <div class="c-qty">
+      <button type="button" class="c-qty__btn" data-step="-1" aria-label="減少數量">−</button>
+      <input type="number" class="c-qty__input" min="1" inputmode="numeric" aria-label="數量">
+      <button type="button" class="c-qty__btn" data-step="1" aria-label="增加數量">+</button>
+    </div>
+    <p class="c-line__total"></p>
+    <button type="button" class="c-line__remove" aria-label="移除">移除</button>
+  </li>
+</template>
+
+<script src="js/cart.js"></script>
+<script src="js/cart-page.js"></script>
+</body>
+</html>

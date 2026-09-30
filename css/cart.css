@@ -1,0 +1,289 @@
+/* 購物車相關樣式：產品頁的加入購物車按鈕、右上角購物車入口、提示訊息、購物車頁。
+   沿用 style.css / products.css 的色票（--ink, --muted, --seal, --paper, --line, --leaf-*）。 */
+
+/* ---------- 產品卡片：加入購物車 ---------- */
+.p-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.p-card__actions .p-card__cta { margin-top: 0; }
+
+.p-card__add {
+  position: relative;
+  z-index: 1;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--paper);
+  background: var(--leaf-deep);
+  border: 1px solid var(--leaf-deep);
+  border-radius: 2px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.p-card__add:hover { background: #4C5E37; border-color: #4C5E37; }
+
+.p-card__add:disabled {
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--line);
+  cursor: not-allowed;
+}
+
+/* ---------- 右上角購物車入口 ---------- */
+.cart-fab {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(252, 250, 246, 0.92);
+  border: 1px solid #CFC4B4;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(42, 38, 32, 0.08);
+}
+
+.cart-fab:hover { border-color: var(--leaf-light); color: var(--leaf-deep); }
+
+.cart-fab__count {
+  min-width: 18px;
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+  background: var(--seal);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 提示訊息 ---------- */
+.cart-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 60;
+  max-width: calc(100vw - 32px);
+  padding: 11px 20px;
+  font-size: 13px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 4px;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cart-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- 購物車頁 ---------- */
+.c-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 16px 72px;
+}
+
+.c-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.c-head__logo img { height: 44px; width: auto; display: block; }
+
+.c-head__back {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.c-head__back:hover { color: var(--leaf-deep); }
+
+.c-title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.c-status { color: var(--muted); font-size: 14px; padding: 24px 0; }
+
+.c-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  align-items: start;
+}
+
+.c-layout[hidden], .c-empty[hidden] { display: none; }
+
+.c-list { list-style: none; }
+
+.c-line {
+  display: grid;
+  grid-template-columns: 76px 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.c-line__img {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.c-line__img.is-empty { background: var(--line); }
+
+.c-line__name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.c-line__variant, .c-line__price { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.c-line__problem { font-size: 12px; color: var(--seal); margin-top: 6px; }
+
+.c-line.has-problem .c-line__img { opacity: 0.5; }
+
+.c-line__total {
+  min-width: 76px;
+  text-align: right;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-line__remove {
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.c-line__remove:hover { color: var(--seal); }
+
+.c-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #CFC4B4;
+  border-radius: 2px;
+}
+
+.c-qty__btn {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.c-qty__btn:hover { color: var(--leaf-deep); }
+
+.c-qty__input {
+  width: 40px;
+  height: 32px;
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  -moz-appearance: textfield;
+}
+
+.c-qty__input::-webkit-outer-spin-button,
+.c-qty__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.c-summary {
+  position: sticky;
+  top: 24px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.c-summary__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 6px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.c-summary__row--muted { color: var(--muted); font-size: 13px; }
+
+.c-summary__warn { font-size: 12px; color: var(--seal); margin-top: 10px; }
+
+.c-checkout {
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--paper);
+  background: var(--leaf-deep);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.c-checkout:disabled { background: #B8B0A4; cursor: not-allowed; }
+
+.c-summary__note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+.c-empty { text-align: center; padding: 64px 0; color: var(--muted); }
+
+.c-empty__icon { width: 56px; opacity: 0.8; margin-bottom: 16px; }
+
+.c-empty__cta { display: inline-block; margin-top: 18px; text-decoration: none; }
+
+@media (max-width: 760px) {
+  .c-layout { grid-template-columns: 1fr; }
+  .c-summary { position: static; }
+  .c-line {
+    grid-template-columns: 64px 1fr auto;
+    grid-template-areas:
+      "img info remove"
+      "img qty total";
+    gap: 10px 12px;
+  }
+  .c-line__img { grid-area: img; width: 64px; height: 64px; align-self: start; }
+  .c-line__info { grid-area: info; }
+  .c-line__remove { grid-area: remove; justify-self: end; align-self: start; }
+  .c-qty { grid-area: qty; justify-self: start; }
+  .c-line__total { grid-area: total; min-width: 0; }
+  .cart-fab { top: 12px; right: 12px; }
+}
