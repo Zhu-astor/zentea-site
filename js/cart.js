@@ -12,14 +12,10 @@
   const STORAGE_KEY = "zentea_cart_v1";
   const MAX_QTY = 99;
 
-  // 後端網址：本機開發時後端跑在 8000 port；正式上線後前後台同網域，走相對路徑 /api/。
-  // 需要時可在載入本檔之前設定 window.ZENTEA_API_BASE 覆蓋。
-  const API_BASE =
-    window.ZENTEA_API_BASE !== undefined
-      ? window.ZENTEA_API_BASE
-      : ["localhost", "127.0.0.1"].includes(location.hostname)
-        ? "http://127.0.0.1:8000"
-        : "";
+  // 後端網址：預設跟頁面同網域，走相對路徑 /api/（開發預覽由 Django 一起提供頁面，
+  // 正式上線也是前後台同網域）。前台放在別的網址時，在載入本檔之前設定
+  // window.ZENTEA_API_BASE = "https://後端網址" 覆蓋，並在後端 CORS_ALLOWED_ORIGINS 加入前台網址。
+  const API_BASE = window.ZENTEA_API_BASE !== undefined ? window.ZENTEA_API_BASE : "";
 
   let memoryCart = {};
 
