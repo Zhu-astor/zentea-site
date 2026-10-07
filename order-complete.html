@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>訂單狀態 | 蟬吃茶 ZenEaTea</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="products-page checkout-page">
+
+<div class="c-wrap">
+  <header class="c-head">
+    <a href="index.html" class="c-head__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+    <a href="products.html" class="c-head__back">← 繼續逛逛</a>
+  </header>
+
+  <h1 class="c-title" data-order-title>訂單狀態</h1>
+
+  <p class="c-status" data-order-status role="status">正在確認付款結果…</p>
+
+  <div class="c-layout co" data-order hidden>
+    <div class="co__main">
+      <div class="oc__message" data-order-message></div>
+      <dl class="oc__meta">
+        <dt>訂單編號</dt><dd data-order-no></dd>
+        <dt>配送方式</dt><dd data-order-shipping-method></dd>
+      </dl>
+    </div>
+
+    <aside class="c-summary">
+      <p class="co__summary-title">訂單內容</p>
+      <ul class="co__items" data-order-items></ul>
+      <div class="c-summary__row"><span>商品小計</span><span data-order-subtotal></span></div>
+      <div class="c-summary__row c-summary__row--muted"><span>運費</span><span data-order-shipping></span></div>
+      <div class="c-summary__row co__total"><span>總額</span><span data-order-total></span></div>
+    </aside>
+  </div>
+</div>
+
+<script src="js/cart.js"></script>
+<script src="js/order-complete-page.js"></script>
+</body>
+</html>

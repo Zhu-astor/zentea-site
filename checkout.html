@@ -67,8 +67,22 @@
       </fieldset>
 
       <fieldset class="co__section">
-        <legend class="co__legend">配送與付款方式</legend>
-        <p class="co__pending">線上付款與配送方式準備中，開放後會在這裡選擇超商取貨或宅配，以及付款方式。</p>
+        <legend class="co__legend">配送方式</legend>
+        <div class="co__options" data-shipping-options>
+          <p class="co__hint">正在載入配送方式…</p>
+        </div>
+        <p class="co__error" data-error="shipping_method" hidden></p>
+        <div class="co__field co__address" data-address-field hidden>
+          <label for="address">宅配地址</label>
+          <input id="address" name="address" autocomplete="shipping street-address" maxlength="200" placeholder="縣市、區、路名、門牌號碼">
+          <p class="co__error" data-error="address" hidden></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="co__section">
+        <legend class="co__legend">付款方式</legend>
+        <p class="co__pay">信用卡（Visa、Mastercard、JCB）</p>
+        <p class="co__hint">按下「前往付款」後會轉到綠界 ECPay 的安全付款頁面刷卡，本站不會經手您的卡號。</p>
       </fieldset>
 
       <fieldset class="co__section">
@@ -90,11 +104,14 @@
       </div>
       <div class="c-summary__row c-summary__row--muted">
         <span>運費</span>
-        <span>選擇配送方式後計算</span>
+        <span data-checkout-shipping>選擇配送方式後計算</span>
       </div>
-      <button type="submit" class="c-checkout" data-checkout-submit>確認資料</button>
-      <p class="co__success" data-checkout-success hidden>資料確認完成。線上付款開放後，就能在這裡完成下單。</p>
-      <p class="c-summary__note">付款功能準備中，目前不會建立訂單或收款</p>
+      <div class="c-summary__row co__total">
+        <span>應付總額</span>
+        <span data-checkout-total>—</span>
+      </div>
+      <button type="submit" class="c-checkout" data-checkout-submit>前往付款</button>
+      <p class="c-summary__note" data-free-shipping-note></p>
     </aside>
   </form>
 

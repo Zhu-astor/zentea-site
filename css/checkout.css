@@ -90,13 +90,39 @@
 
 .co__same { margin-bottom: 14px; }
 
-.co__pending {
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--muted);
-  padding: 14px 16px;
-  background: #F6F2EA;
-  border-radius: 4px;
+/* 配送方式：整列可點的選項 */
+.co__options { display: grid; gap: 8px; }
+
+.co__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #CFC4B4;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.co__option input { accent-color: var(--leaf-deep); margin: 0; flex: none; }
+.co__option:has(input:checked) { border-color: var(--leaf-deep); box-shadow: 0 0 0 1px var(--leaf-deep); }
+.co__option:has(input:focus-visible) { outline: 2px solid var(--leaf-deep); outline-offset: 2px; }
+.co__option.is-disabled { color: var(--muted); background: #F6F2EA; cursor: not-allowed; }
+.co__option-fee { margin-left: auto; font-size: 13px; font-variant-numeric: tabular-nums; }
+.co__option.is-disabled .co__option-fee { font-size: 12px; }
+
+.co__address { margin-top: 14px; }
+.co__address[hidden] { display: none; }
+
+.co__pay { font-size: 14px; margin-bottom: 6px; }
+
+.co__total {
+  font-weight: 500;
+  font-size: 15px;
+  border-top: 1px solid var(--line);
+  margin-top: 6px;
+  padding-top: 12px;
 }
 
 .co__summary-title {
@@ -124,18 +150,6 @@
 
 .co__item.has-problem span:last-child { color: var(--seal); }
 
-.co__success {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--leaf-deep);
-  margin-top: 12px;
-  padding: 10px 12px;
-  background: #F3F6EC;
-  border-radius: 4px;
-}
-
-.co__success[hidden] { display: none; }
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -148,3 +162,19 @@
 @media (max-width: 760px) {
   .co__row { grid-template-columns: 1fr; }
 }
+
+/* 訂單完成頁 */
+.oc__message { font-size: 14px; line-height: 1.9; margin-bottom: 24px; }
+.oc__action { display: inline-block; width: auto; padding: 11px 28px; margin-top: 16px; }
+
+.oc__meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 20px;
+  font-size: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.oc__meta dt { color: var(--muted); }
+.oc__meta dd { margin: 0; font-variant-numeric: tabular-nums; }
