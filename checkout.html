@@ -72,10 +72,25 @@
           <p class="co__hint">正在載入配送方式…</p>
         </div>
         <p class="co__error" data-error="shipping_method" hidden></p>
-        <div class="co__field co__address" data-address-field hidden>
-          <label for="address">宅配地址</label>
-          <input id="address" name="address" autocomplete="shipping street-address" maxlength="200" placeholder="縣市、區、路名、門牌號碼">
-          <p class="co__error" data-error="address" hidden></p>
+        <div class="co__store" data-store-box hidden>
+          <div class="co__store-info">
+            <p class="co__store-name" data-store-name>尚未選擇取貨門市</p>
+            <p class="co__hint" data-store-address></p>
+          </div>
+          <a class="co__store-btn" href="#" data-store-pick>選擇門市</a>
+        </div>
+        <p class="co__error" data-error="cvs_store_id" hidden></p>
+        <div class="co__row co__address" data-address-field hidden>
+          <div class="co__field co__zip">
+            <label for="receiver_zipcode">郵遞區號</label>
+            <input id="receiver_zipcode" name="receiver_zipcode" autocomplete="shipping postal-code" inputmode="numeric" maxlength="6" placeholder="100">
+            <p class="co__error" data-error="receiver_zipcode" hidden></p>
+          </div>
+          <div class="co__field">
+            <label for="address">宅配地址</label>
+            <input id="address" name="address" autocomplete="shipping street-address" maxlength="60" placeholder="縣市、區、路名、門牌號碼">
+            <p class="co__error" data-error="address" hidden></p>
+          </div>
         </div>
       </fieldset>
 
@@ -83,6 +98,7 @@
         <legend class="co__legend">付款方式</legend>
         <p class="co__pay">信用卡（Visa、Mastercard、JCB）</p>
         <p class="co__hint">按下「前往付款」後會轉到綠界 ECPay 的安全付款頁面刷卡，本站不會經手您的卡號。</p>
+        <p class="co__hint">超商取貨與宅配皆由綠界物流配送；收件人姓名需與證件相符（2～5 個中文字或 4～10 個英文字母）。</p>
       </fieldset>
 
       <fieldset class="co__section">

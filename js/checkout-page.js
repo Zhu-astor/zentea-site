@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const receiverFields = $("[data-receiver-fields]");
   const addressField = $("[data-address-field]");
   const DRAFT_KEY = "zentea_checkout_draft";
-  const FIELDS = ["customer_name", "customer_phone", "customer_email", "receiver_name", "receiver_phone", "address", "note"];
+  const STORE_KEY = "zentea_checkout_store";
+  const FIELDS = ["customer_name", "customer_phone", "customer_email", "receiver_name", "receiver_phone",
+    "receiver_zipcode", "address", "note"];
+  const CVS_METHODS = ["cvs_fami", "cvs_unimart"];
   const SUBMIT_LABEL = "前往付款";
 
   let subtotal = 0;
@@ -51,13 +54,48 @@ document.addEventListener("DOMContentLoaded", async () => {
     return checked ? checked.value : "";
   }
 
+  // ---------- 超商門市（綠界電子地圖選好後帶回來） ----------
+  function readStore() {
+    try {
+      return JSON.parse(sessionStorage.getItem(STORE_KEY) || "null");
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveStore(store) {
+    try {
+      sessionStorage.setItem(STORE_KEY, JSON.stringify(store));
+    } catch (e) {
+      /* 無痕模式：門市只存在這次頁面 */
+    }
+  }
+
+  // 從電子地圖回來時，門市資料在網址的 # 後面
+  let store = readStore();
+  if (location.hash.includes("store_id=")) {
+    const p = new URLSearchParams(location.hash.slice(1));
+    store = { method: p.get("store_method"), id: p.get("store_id"), name: p.get("store_name"), address: p.get("store_address") };
+    saveStore(store);
+    history.replaceState(null, "", location.pathname);
+  }
+
+  function currentStore() {
+    return store && store.id && store.method === selectedMethod() ? store : null;
+  }
+
   function collect() {
     const data = { receiver_same: sameBox.checked, shipping_method: selectedMethod() };
     FIELDS.forEach((name) => (data[name] = form.elements[name].value));
+    const s = currentStore();
+    data.cvs_store_id = s ? s.id : "";
+    data.cvs_store_name = s ? s.name : "";
+    data.cvs_store_address = s ? s.address : "";
     return data;
   }
 
   const draft = readDraft();
+  if (store && store.method) draft.shipping_method = store.method; // 剛選完門市，配送方式跟著門市
   FIELDS.forEach((name) => {
     if (typeof draft[name] === "string") form.elements[name].value = draft[name];
   });
@@ -86,11 +124,31 @@ document.addEventListener("DOMContentLoaded", async () => {
       fee === null ? "選擇配送方式後計算" : fee === 0 ? "免運" : cart.formatPrice(fee);
     $("[data-checkout-total]").textContent = fee === null ? "—" : cart.formatPrice(subtotal + fee);
     addressField.hidden = !method || method.code !== "home";
+    renderStore();
 
     const note = $("[data-free-shipping-note]");
     const gap = shipping.free_shipping_threshold - subtotal;
     note.textContent = Number.isFinite(gap) && gap > 0 ? `再買 ${cart.formatPrice(gap)} 即可免運` : "";
   }
+
+  function renderStore() {
+    const method = selectedMethod();
+    const box = $("[data-store-box]");
+    box.hidden = !CVS_METHODS.includes(method);
+    if (box.hidden) return;
+    const s = currentStore();
+    const name = $("[data-store-name]");
+    name.textContent = s ? s.name : "尚未選擇取貨門市";
+    name.classList.toggle("is-empty", !s);
+    $("[data-store-address]").textContent = s ? s.address : "";
+    const pick = $("[data-store-pick]");
+    pick.textContent = s ? "重新選擇" : "選擇門市";
+    const mobile = window.matchMedia("(max-width: 760px)").matches ? "1" : "0";
+    pick.href = `${cart.apiBase}/api/logistics/map/?method=${encodeURIComponent(method)}&mobile=${mobile}`;
+  }
+
+  // 離開去選門市前先存草稿，回來時填過的資料都還在
+  $("[data-store-pick]").addEventListener("click", saveDraft);
 
   function renderShippingOptions() {
     const box = $("[data-shipping-options]");

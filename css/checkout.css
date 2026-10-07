@@ -112,8 +112,31 @@
 .co__option-fee { margin-left: auto; font-size: 13px; font-variant-numeric: tabular-nums; }
 .co__option.is-disabled .co__option-fee { font-size: 12px; }
 
-.co__address { margin-top: 14px; }
+.co__address { margin-top: 14px; grid-template-columns: 120px 1fr; }
 .co__address[hidden] { display: none; }
+
+.co__store {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #F6F2EA;
+  border-radius: 4px;
+}
+.co__store[hidden] { display: none; }
+.co__store-info { flex: 1; min-width: 0; }
+.co__store-name { font-size: 14px; }
+.co__store-name.is-empty { color: var(--muted); }
+.co__store-btn {
+  flex: none;
+  font-size: 13px;
+  color: var(--leaf-deep);
+  border: 1px solid var(--leaf-deep);
+  border-radius: 2px;
+  padding: 7px 14px;
+  text-decoration: none;
+}
 
 .co__pay { font-size: 14px; margin-bottom: 6px; }
 
@@ -160,7 +183,7 @@
 }
 
 @media (max-width: 760px) {
-  .co__row { grid-template-columns: 1fr; }
+  .co__row, .co__address { grid-template-columns: 1fr; }
 }
 
 /* 訂單完成頁 */
@@ -178,3 +201,8 @@
 
 .oc__meta dt { color: var(--muted); }
 .oc__meta dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+/* 訂單查詢頁 */
+.ol__form { max-width: 640px; margin-bottom: 32px; }
+.ol__submit { width: auto; padding: 11px 36px; }
+.oc__meta [hidden] { display: none; }

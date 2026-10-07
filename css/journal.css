@@ -242,3 +242,76 @@ html, body.journal-page {
 .j-card-group:hover .j-card {
     /* 例如：transform: translateY(-4px); transition: 0.3s ease; */
 }
+
+/* ---------- 最新文章（從後端讀取） ---------- */
+.j-latest {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8px 4vw 64px;
+}
+
+.j-latest[hidden] { display: none; }
+
+.j-latest__title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  margin: 0 0 14px;
+}
+
+.j-latest__filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+
+.j-latest__filter {
+  font: inherit;
+  font-size: 12px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid #D8CFC2;
+  border-radius: 999px;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+
+.j-latest__filter.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+.j-latest__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.j-post {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #FAF8F4;
+  color: var(--ink);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.j-post:hover { box-shadow: 0 12px 26px rgba(42, 38, 32, 0.1); }
+.j-post__img { aspect-ratio: 4 / 5; background: #EDE6DA; }
+.j-post__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.j-post__body { padding: 16px 18px 20px; }
+.j-post__title { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 16px; line-height: 1.5; margin: 0 0 8px; }
+.j-post__summary { font-size: 13px; line-height: 1.75; color: var(--muted); margin: 0 0 10px; }
+.j-post__date { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+.j-latest__more {
+  display: block;
+  margin: 28px auto 0;
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 10px 32px;
+  cursor: pointer;
+}
+
+.j-latest__more[hidden] { display: none; }

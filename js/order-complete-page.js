@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cart.items().forEach((item) => cart.remove(item.sku));
     try {
       sessionStorage.removeItem("zentea_checkout_draft");
+      sessionStorage.removeItem("zentea_checkout_store");
     } catch (e) {
       /* 略過 */
     }

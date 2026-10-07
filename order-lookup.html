@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>訂單查詢 | 蟬吃茶 ZenEaTea</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/products.css">
+<link rel="stylesheet" href="css/cart.css">
+<link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="products-page checkout-page">
+
+<div class="c-wrap">
+  <header class="c-head">
+    <a href="index.html" class="c-head__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+    <a href="products.html" class="c-head__back">← 繼續逛逛</a>
+  </header>
+
+  <h1 class="c-title">訂單查詢</h1>
+
+  <form class="co ol__form" data-lookup-form novalidate>
+    <p class="co__hint">請輸入訂單編號（ZT 開頭，在訂單確認信裡）與下單時填寫的 Email。</p>
+    <div class="co__row">
+      <div class="co__field">
+        <label for="order_no">訂單編號</label>
+        <input id="order_no" name="order_no" maxlength="20" autocomplete="off" placeholder="ZT…" required>
+      </div>
+      <div class="co__field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+      </div>
+    </div>
+    <p class="co__alert" data-lookup-error hidden></p>
+    <button type="submit" class="c-checkout ol__submit" data-lookup-submit>查詢</button>
+  </form>
+
+  <div class="c-layout co" data-order hidden>
+    <div class="co__main">
+      <dl class="oc__meta">
+        <dt>訂單編號</dt><dd data-f="order_no"></dd>
+        <dt>訂單狀態</dt><dd data-f="status_label"></dd>
+        <dt>配送方式</dt><dd data-f="shipping_method"></dd>
+        <dt data-row="store">取貨門市</dt><dd data-row="store" data-f="cvs_store_name"></dd>
+        <dt data-row="shipment">寄貨編號</dt><dd data-row="shipment" data-f="shipment_no"></dd>
+        <dt data-row="logistics">物流狀態</dt><dd data-row="logistics" data-f="logistics_status"></dd>
+      </dl>
+    </div>
+    <aside class="c-summary">
+      <p class="co__summary-title">訂單內容</p>
+      <ul class="co__items" data-order-items></ul>
+      <div class="c-summary__row"><span>商品小計</span><span data-money="subtotal"></span></div>
+      <div class="c-summary__row c-summary__row--muted"><span>運費</span><span data-money="shipping_fee"></span></div>
+      <div class="c-summary__row co__total"><span>總額</span><span data-money="total"></span></div>
+    </aside>
+  </div>
+</div>
+
+<script src="js/cart.js"></script>
+<script src="js/order-lookup-page.js"></script>
+</body>
+</html>
