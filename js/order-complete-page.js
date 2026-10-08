@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function render(order) {
     $("[data-order-no]").textContent = order.order_no;
     $("[data-order-shipping-method]").textContent = order.shipping_method;
+    $("[data-order-store]").textContent = order.cvs_store_name || "";
+    document.querySelectorAll("[data-store-row]").forEach((el) => (el.hidden = !order.is_cvs));
     $("[data-order-items]").replaceChildren(
       ...order.items.map((item) => {
         const li = document.createElement("li");
@@ -82,7 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     } else {
       title.textContent = "訂購完成，謝謝您";
-      message(["我們已收到您的付款，會盡快為您備貨出貨。"], [["繼續逛逛", "products.html"]]);
+      message(
+        [
+          "我們已收到您的付款，會盡快為您備貨出貨。",
+          "出貨時會寄 Email 通知您寄貨編號；之後隨時可以到「訂單查詢」，用訂單編號和 Email 查看物流進度。",
+        ],
+        [["查詢訂單", "order-lookup.html"], ["繼續逛逛", "products.html"]]
+      );
     }
     status.hidden = true;
     $("[data-order]").hidden = false;

@@ -188,7 +188,7 @@
 
 /* 訂單完成頁 */
 .oc__message { font-size: 14px; line-height: 1.9; margin-bottom: 24px; }
-.oc__action { display: inline-block; width: auto; padding: 11px 28px; margin-top: 16px; }
+.oc__action { display: inline-block; width: auto; padding: 11px 28px; margin: 16px 10px 0 0; }
 
 .oc__meta {
   display: grid;
