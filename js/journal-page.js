@@ -1,8 +1,8 @@
 /*
- * 蟬吃誌精選輪播：三組文章（最新／人氣／最多點閱），每組六張卡片，
+ * 蟬吃誌輪播：第一組是 HTML 裡原本手工排版的六張卡片（精選文章），
+ * 按箭頭依序換成最新文章／人氣文章／最多點閱，每組六張，版型跟第一組完全相同。
  * 用左右箭頭、上方分頁、鍵盤左右鍵或手機左右滑切換。
- * 資料來自後端 /api/articles/?sort=…&page_size=6（只有已發布的文章）。
- * 後端連不上或還沒有文章時，保留 HTML 裡手工排版的卡片、不顯示箭頭。
+ * 文章來自後端 /api/articles/?sort=…&page_size=6（只有已發布的文章）；後端連不上時只顯示第一組。
  */
 document.addEventListener("DOMContentLoaded", () => {
   const api = window.ZenteaCart ? window.ZenteaCart.apiBase : "";
@@ -20,13 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
     { sort: "views", title: "最多點閱", sub: "上線以來，被打開最多次的文章。" },
   ];
   const PER_SLIDE = 6;
+  const FEATURED = { static: true, title: "精選文章", sub: "把山林、茶香與生活裡的留白，慢慢寫下來。", html: columns.innerHTML };
   let slides = [];
   let current = 0;
   let busy = false;
-
-  const EYE =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
-    '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
 
   function el(tag, className, text) {
     const node = document.createElement(tag);
@@ -35,43 +32,44 @@ document.addEventListener("DOMContentLoaded", () => {
     return node;
   }
 
-  // 卡片：沿用原本 .j-card 的版型（文字左、圖片右；中間大卡上文下圖）
-  function card(a, rank, variant, showViews) {
-    const link = el("a", `j-card j-card--photo ${variant}`.trim());
+  // 卡片：結構跟原本手工排版的卡片完全一樣（分類、標題、[大卡描述]、閱讀全文、圖片）
+  function card(a, rank, variant, ranked) {
+    const link = el("a", `j-card ${variant}`.trim());
     link.href = `article.html?slug=${encodeURIComponent(a.slug)}`;
     const body = el("div", "j-card__body");
-    const eyebrow = el("p", "j-card__eyebrow");
-    if (showViews) eyebrow.append(el("span", "j-card__rank", `No.${rank}`));
-    eyebrow.append(a.category || "蟬吃誌");
+    const eyebrow = el("p", "j-card__eyebrow", a.category || "蟬吃誌");
+    if (ranked) eyebrow.prepend(el("span", "j-card__rank", `No.${rank}`));
     body.append(eyebrow, el("h2", "j-card__title", a.title));
     if (variant === "j-card--hero" && a.summary) body.append(el("p", "j-card__desc", a.summary));
-    const foot = el("div", "j-card__foot");
-    foot.append(el("span", "j-card__arrow", "閱讀全文 →"));
-    if (showViews) {
-      const views = el("span", "j-card__views");
-      views.innerHTML = EYE;
-      views.append(String(a.view_count));
-      views.title = `點閱 ${a.view_count} 次`;
-      foot.append(views);
-    }
-    body.append(foot);
-    link.append(body);
+    body.append(el("span", "j-card__arrow", "閱讀全文 →"));
     const media = el("div", "j-card__media");
     const src = a.cover_thumb || a.cover;
     if (src) {
       const img = el("img");
       img.src = src;
-      img.alt = "";
+      img.alt = a.title;
       img.loading = "lazy";
       media.append(img);
     }
-    link.append(media);
+    link.append(body, media);
     return link;
   }
 
   // 六張卡片排進三欄：左 2 張、中間 1 張大卡（第一名）、右 3 張
   function renderSlide(index) {
     const slide = slides[index];
+    title.textContent = slide.title;
+    sub.textContent = slide.sub;
+    tabs.querySelectorAll("button").forEach((b, i) => {
+      b.classList.toggle("is-active", i === index);
+      b.setAttribute("aria-selected", String(i === index));
+    });
+    // 第一組：原本手工排版的六張卡片，原封不動放回去
+    if (slide.static) {
+      columns.innerHTML = slide.html;
+      delete columns.dataset.count;
+      return;
+    }
     const showViews = slide.sort !== "latest";
     const [hero, ...rest] = slide.articles;
     const left = el("div", "j-col");
@@ -84,13 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cols = [left, middle, right].filter((c) => c.childElementCount);
     columns.replaceChildren(...cols);
     columns.dataset.count = slide.articles.length;
-
-    title.textContent = slide.title;
-    sub.textContent = slide.sub;
-    tabs.querySelectorAll("button").forEach((b, i) => {
-      b.classList.toggle("is-active", i === index);
-      b.setAttribute("aria-selected", String(i === index));
-    });
   }
 
   function go(index, direction) {
@@ -164,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 4000));
     try {
       const results = await Promise.race([Promise.all(SLIDES.map(fetchSlide)), timeout]);
-      slides = SLIDES.map((s, i) => ({ ...s, articles: results[i].articles })).filter((s) => s.articles.length);
-      if (!slides.length) return;
+      slides = [FEATURED, ...SLIDES.map((s, i) => ({ ...s, articles: results[i].articles })).filter((s) => s.articles.length)];
+      if (slides.length < 2) return;
       setup();
       const total = results[0].facets ? results[0].facets.total : 0;
       if (total > PER_SLIDE) {
