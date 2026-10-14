@@ -638,3 +638,61 @@ body.home-page {
     opacity: 1; 
     transform: translateY(0); 
 }
+/* =========================================
+   首頁：船旁邊的「走進蟬吃茶」按鈕（捲到品牌理念）
+   位置跟著 .boat-wrapper（left 50%、寬 15vw、bottom 5%），放在船的右側
+   ========================================= */
+.hero-enter {
+    position: absolute;
+    z-index: 5;
+    left: calc(50% + 9vw);
+    bottom: calc(5% + 4vw);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px 10px 22px;
+    font-family: "Noto Serif TC", serif;
+    font-size: 14px;
+    letter-spacing: 0.22em;
+    color: #4A4036;
+    text-decoration: none;
+    background: rgba(250, 248, 244, 0.72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(155, 61, 56, 0.35);
+    border-radius: 999px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.hero-enter svg {
+    width: 15px;
+    height: 15px;
+    animation: hero-enter-bob 2.2s ease-in-out infinite;
+}
+
+.hero-enter:hover {
+    color: #fff;
+    background: #9B3D38;
+    border-color: #9B3D38;
+    transform: translateY(-2px);
+}
+
+@keyframes hero-enter-bob {
+    0%, 100% { transform: translateY(-1px); }
+    50% { transform: translateY(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-enter svg { animation: none; }
+}
+
+@media (max-width: 860px) {
+    .hero-enter {
+        left: 50%;
+        bottom: calc(5% + 34vw);
+        transform: translateX(-50%);
+        font-size: 13px;
+        padding: 9px 14px 9px 18px;
+    }
+    .hero-enter:hover { transform: translateX(-50%) translateY(-2px); }
+}

@@ -5,9 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>蟬吃茶 ZenEaTea</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/site-nav.css">
 </head>
 
 <body class="home-page">
+
+<!-- 固定功能列：data-variant="clear" 全透明、"frost" 80% 白底；網址加 ?nav=frost 可直接切換比較 -->
+<header class="site-nav" data-site-nav data-variant="clear">
+  <a href="index.html" class="site-nav__logo"><img src="assets/img/logo.png" alt="蟬吃茶"></a>
+  <nav class="site-nav__links" id="site-nav-links" aria-label="主要選單">
+    <a href="index.html" class="is-active">首頁</a>
+    <a href="#session-4">關於蟬吃茶</a>
+    <a href="products.html">產品介紹</a>
+    <a href="articles.html?category=%E8%8C%B6%E7%9A%84%E6%97%A5%E5%B8%B8">茶的日常</a>
+    <a href="journal.html">蟬吃誌</a>
+    <a href="#">門市據點</a>
+  </nav>
+  <div class="site-nav__icons">
+    <a href="order-lookup.html" class="site-nav__icon" aria-label="訂單查詢" title="訂單查詢">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+    </a>
+    <a href="cart.html" class="site-nav__icon" aria-label="購物車" title="購物車">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></svg>
+      <span class="site-nav__count" data-cart-count hidden>0</span>
+    </a>
+    <button type="button" class="site-nav__icon site-nav__menu-btn" data-nav-toggle aria-label="選單" aria-controls="site-nav-links" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
 
 <div class="bg-scroll-guard">
   <div class="home-bg-layer"></div>
@@ -36,6 +63,12 @@
       <img src="assets/img/left-leaf.png" alt="右景" class="layer-anim-right">
     </div>
   </div>
+
+  <!-- 船旁邊的小按鈕：捲到第四段「品牌理念」 -->
+  <a href="#session-4" class="hero-enter" data-scroll-to="#session-4">
+    走進蟬吃茶
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
 </section>
 
 <!-- ==================================== -->
@@ -236,6 +269,19 @@
 
 <!-- 匯入你的 main.js，確保原本的左右滑動特效運作 -->
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/site-nav.js"></script>
+<script>
+  // 「走進蟬吃茶」與「關於蟬吃茶」：平滑捲到品牌理念，讓四個理念置中出現
+  document.querySelectorAll('a[href="#session-4"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const target = document.querySelector("#session-4");
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+</script>
 
 </body>
 </html>

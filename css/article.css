@@ -42,3 +42,4 @@ body.article-page { background: #FDFBF6; color: var(--ink); margin: 0; }
   .ar__title { font-size: 23px; }
   .ar__body { font-size: 15.5px; }
 }
+.ar-head__nav { display: flex; gap: 20px; }

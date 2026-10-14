@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>蟬茶日誌 | 蟬吃茶 ZenEaTea</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/site-nav.css">
 <link rel="stylesheet" href="css/journal.css">
 </head>
 <body class="journal-page">
@@ -19,18 +20,22 @@
     
     <nav class="nav-links">
       <a href="index.html">首頁</a>
-      <a href="#">關於蟬吃茶</a>
+      <a href="index.html#session-4">關於蟬吃茶</a>
       <a href="products.html">產品介紹</a>
-      <a href="#">茶的日常</a>
+      <a href="articles.html?category=%E8%8C%B6%E7%9A%84%E6%97%A5%E5%B8%B8">茶的日常</a>
       <a href="journal.html" class="active">蟬吃誌</a>
       <a href="#">門市據點</a>
     </nav>
     
     <!-- 右側功能圖示 (會員、購物車、漢堡選單) 可先留空或放入你的圖示 -->
-    <div class="nav-icons">
-       <span>👤</span>
-       <span>🛍️</span>
-       <span>☰</span>
+    <div class="site-nav__icons">
+      <a href="order-lookup.html" class="site-nav__icon" aria-label="訂單查詢" title="訂單查詢">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </a>
+      <a href="cart.html" class="site-nav__icon" aria-label="購物車" title="購物車">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></svg>
+        <span class="site-nav__count" data-cart-count hidden>0</span>
+      </a>
     </div>
   </div>
 
@@ -47,7 +52,21 @@
   </div>
 </header>
 
-<main class="journal-columns">
+<!-- 精選輪播：最新文章 → 人氣文章 → 最多點閱，每組六張卡片，左右箭頭切換。
+     卡片從後端讀取；後端連不上時維持下面手工排版的卡片。 -->
+<section class="j-feature" data-feature aria-roledescription="輪播" aria-label="蟬吃誌精選文章">
+  <header class="j-feature__head">
+    <p class="j-feature__eyebrow">CHAN CHA JOURNAL</p>
+    <h2 class="j-feature__title" data-feature-title>精選文章</h2>
+    <p class="j-feature__sub" data-feature-sub>把山林、茶香與生活裡的留白，慢慢寫下來。</p>
+    <div class="j-feature__tabs" data-feature-tabs role="tablist" hidden></div>
+  </header>
+
+  <div class="j-feature__stage">
+    <button type="button" class="j-feature__arrow j-feature__arrow--prev" data-feature-prev aria-label="上一組文章" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+<main class="journal-columns is-pending" data-feature-columns aria-live="polite">
 
   <div class="j-col">
     <a class="j-card" href="article-1.html">
@@ -112,13 +131,21 @@
   </div>
 
 </main>
+    <button type="button" class="j-feature__arrow j-feature__arrow--next" data-feature-next aria-label="下一組文章" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
 
-<!-- 最新文章：從後端（蟬吃誌文章）讀取，每日內容排程上傳、後台發布後就會出現在這裡 -->
-<section class="j-latest" data-articles hidden>
-  <h2 class="j-latest__title">最新文章</h2>
-  <div class="j-latest__filters" data-article-filters></div>
-  <div class="j-latest__grid" data-article-grid></div>
-  <button type="button" class="j-latest__more" data-article-more hidden>載入更多</button>
+<!-- 其他文章（非最新、點閱較少）都在「全部文章」頁 -->
+<section class="j-more">
+  <img src="assets/img/leaf-1.png" alt="" class="j-more__leaf">
+  <div class="j-more__text">
+    <p class="j-more__eyebrow">MORE STORIES</p>
+    <h2 class="j-more__title">更多文章，慢慢翻</h2>
+    <p class="j-more__desc" data-more-desc>依分類、日期找到想讀的那一篇，還能看到大家最常讀哪些。</p>
+  </div>
+  <a href="articles.html" class="j-more__btn">看全部文章 <span aria-hidden="true">→</span></a>
 </section>
 
 <footer class="site-footer-bg">

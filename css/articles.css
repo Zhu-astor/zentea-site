@@ -1,0 +1,475 @@
+/* 蟬吃誌「全部文章」頁。色票沿用 style.css（--ink, --muted, --seal），頂部橫幅與頁尾沿用 journal.css。 */
+
+body.articles-page { background: #FDFBF6; }
+
+/* ---------- 頂部橫幅：比蟬茶日誌矮一點 ---------- */
+.ax-hero { min-height: 300px; }
+.ax-hero .hero-content { margin-top: 48px; }
+
+.ax-crumb {
+  font-size: 12px !important;
+  letter-spacing: 0.16em !important;
+  color: var(--muted) !important;
+  margin-bottom: 10px;
+}
+
+.ax-crumb a { color: var(--seal); text-decoration: none; }
+.ax-crumb a:hover { text-decoration: underline; }
+.ax-crumb span { margin: 0 6px; opacity: 0.5; }
+
+/* ---------- 版面：左側篩選、右側文章 ---------- */
+.ax-wrap {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  gap: 44px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 4vw 88px;
+}
+
+.ax-side {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ax-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ax-search svg {
+  position: absolute;
+  left: 14px;
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.ax-search input {
+  width: 100%;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--ink);
+  padding: 11px 14px 11px 40px;
+  background: #fff;
+  border: 1px solid #E4DCCF;
+  border-radius: 999px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ax-search input:focus { border-color: #C9A99A; box-shadow: 0 0 0 3px rgba(155, 61, 56, 0.08); }
+
+.ax-group__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  margin: 0 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ECE4D8;
+}
+
+.ax-group__title img { width: 18px; height: auto; }
+
+.ax-list { list-style: none; margin: 0; padding: 0; }
+
+.ax-list button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font: inherit;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
+  color: #4A4036;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ax-list button:hover { background: #F3EEE6; }
+
+.ax-list button.is-active {
+  color: var(--seal);
+  background: #F7ECE7;
+  font-weight: 500;
+}
+
+.ax-list__count {
+  min-width: 26px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--muted);
+  background: #F0EAE0;
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+.ax-list button.is-active .ax-list__count { color: #fff; background: var(--seal); }
+
+/* ---------- 工具列：篇數、目前的篩選、排序 ---------- */
+.ax-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid #ECE4D8;
+}
+
+.ax-count {
+  font-family: "Noto Serif TC", serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.ax-count strong { font-size: 22px; color: var(--seal); margin: 0 4px; }
+
+.ax-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ax-chips:empty { display: none; }
+
+.ax-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: inherit;
+  font-size: 12px;
+  color: #4A4036;
+  background: #fff;
+  border: 1px solid #E4DCCF;
+  border-radius: 999px;
+  padding: 4px 8px 4px 12px;
+  cursor: pointer;
+}
+
+.ax-chip:hover { border-color: var(--seal); color: var(--seal); }
+.ax-chip span { font-size: 14px; line-height: 1; opacity: 0.6; }
+
+.ax-sort {
+  display: inline-flex;
+  padding: 4px;
+  background: #F3EEE6;
+  border-radius: 999px;
+}
+
+.ax-sort button {
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.ax-sort button:hover { color: var(--ink); }
+.ax-sort button.is-active { background: #fff; color: var(--seal); box-shadow: 0 1px 4px rgba(42, 38, 32, 0.1); }
+
+/* ---------- 文章卡片 ---------- */
+.ax-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 24px;
+}
+
+.ax-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--ink);
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #EFE8DD;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ax-card:hover {
+  transform: translateY(-4px);
+  border-color: #E4D6C6;
+  box-shadow: 0 18px 36px rgba(42, 38, 32, 0.1);
+}
+
+.ax-card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #EDE6DA;
+}
+
+.ax-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.ax-card:hover .ax-card__media img { transform: scale(1.04); }
+
+/* 圖片上的標籤：分類（左上）、影片／新文章（右上） */
+.ax-card__tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  background: rgba(253, 251, 246, 0.88);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+
+.ax-card__badges {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.ax-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: rgba(42, 38, 32, 0.62);
+  border-radius: 999px;
+  padding: 4px 9px;
+}
+
+.ax-badge--new { background: var(--seal); }
+.ax-badge svg { width: 11px; height: 11px; }
+
+/* 人氣／最多點閱排序時，圖片左下角放名次 */
+.ax-card__rank {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  min-width: 58px;
+  padding: 8px 14px 6px;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(135deg, var(--seal), #7E3A2B);
+  border-top-right-radius: 14px;
+}
+
+.ax-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 20px 20px;
+}
+
+.ax-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.ax-card__meta > span + span::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: #C9BEAE;
+  border-radius: 50%;
+}
+
+.ax-views { display: inline-flex; align-items: center; gap: 4px; }
+.ax-views svg { width: 13px; height: 13px; vertical-align: -2px; }
+
+.ax-card__title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.ax-card__summary {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0 0 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.ax-card__more {
+  margin-top: auto;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  color: var(--seal);
+  transition: letter-spacing 0.3s;
+}
+
+.ax-card:hover .ax-card__more { letter-spacing: 0.18em; }
+
+/* 最新排序第一頁、沒有篩選時，第一篇做成橫跨兩欄的大卡 */
+.ax-card--wide {
+  grid-column: span 2;
+  flex-direction: row;
+}
+
+.ax-card--wide .ax-card__media { flex: 0 0 52%; aspect-ratio: auto; min-height: 340px; }
+.ax-card--wide .ax-card__body { padding: 30px 30px 28px; justify-content: center; }
+.ax-card--wide .ax-card__title { font-size: 23px; -webkit-line-clamp: 3; }
+.ax-card--wide .ax-card__summary { font-size: 14px; -webkit-line-clamp: 6; }
+
+/* ---------- 讀取中的骨架 ---------- */
+.ax-skeleton { pointer-events: none; }
+.ax-skeleton .ax-card__media,
+.ax-skeleton .ax-line {
+  background: linear-gradient(90deg, #EFE9DF 0%, #F7F3EC 50%, #EFE9DF 100%);
+  background-size: 200% 100%;
+  animation: ax-shimmer 1.4s ease-in-out infinite;
+}
+
+.ax-line { height: 12px; border-radius: 6px; margin-bottom: 10px; }
+.ax-line--title { height: 18px; width: 85%; }
+.ax-line--short { width: 55%; }
+
+@keyframes ax-shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+/* ---------- 空狀態、錯誤 ---------- */
+.ax-empty {
+  text-align: center;
+  padding: 64px 20px;
+  border: 1px dashed #E0D6C7;
+  border-radius: 16px;
+}
+
+.ax-empty[hidden], .ax-error[hidden] { display: none; }
+.ax-empty img { width: 56px; opacity: 0.85; }
+.ax-empty__title { font-family: "Noto Serif TC", serif; font-size: 18px; letter-spacing: 0.1em; margin: 14px 0 6px; }
+.ax-empty__desc { font-size: 13px; color: var(--muted); margin: 0 0 20px; }
+.ax-error { color: var(--seal); font-size: 14px; }
+
+.ax-btn {
+  font: inherit;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 26px;
+  cursor: pointer;
+}
+
+.ax-btn:hover { background: #9B3D38; }
+
+/* ---------- 分頁 ---------- */
+.ax-pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 44px;
+}
+
+.ax-pager:empty { display: none; }
+
+.ax-pager button {
+  min-width: 40px;
+  height: 40px;
+  font: inherit;
+  font-size: 13.5px;
+  color: #4A4036;
+  background: #fff;
+  border: 1px solid #E4DCCF;
+  border-radius: 999px;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.ax-pager button:hover:not(:disabled) { border-color: var(--seal); color: var(--seal); }
+.ax-pager button.is-active { color: #fff; background: var(--ink); border-color: var(--ink); }
+.ax-pager button:disabled { opacity: 0.4; cursor: default; }
+.ax-pager__gap { color: var(--muted); padding: 0 4px; }
+
+/* ---------- 響應式 ---------- */
+@media (max-width: 1180px) {
+  .ax-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .ax-hero { min-height: 240px; }
+  .ax-wrap { grid-template-columns: 1fr; gap: 24px; padding: 24px 6vw 64px; }
+  /* 手機：篩選欄改成上方橫向捲動的標籤 */
+  .ax-side { position: static; gap: 14px; }
+  .ax-group__title { display: none; }
+  .ax-list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .ax-list::-webkit-scrollbar { display: none; }
+  .ax-list li { flex: 0 0 auto; }
+  .ax-list button {
+    gap: 8px;
+    white-space: nowrap;
+    background: #fff;
+    border: 1px solid #E4DCCF;
+    border-radius: 999px;
+    padding: 6px 12px;
+  }
+  .ax-card--wide { grid-column: auto; flex-direction: column; }
+  .ax-card--wide .ax-card__media { aspect-ratio: 1 / 1; min-height: 0; }
+  .ax-card--wide .ax-card__body { padding: 18px 20px 20px; }
+  .ax-card--wide .ax-card__title { font-size: 18px; }
+}
+
+@media (max-width: 600px) {
+  .ax-grid { grid-template-columns: 1fr; }
+  .ax-toolbar { align-items: flex-start; flex-direction: column; }
+}

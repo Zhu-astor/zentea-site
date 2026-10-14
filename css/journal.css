@@ -243,75 +243,223 @@ html, body.journal-page {
     /* 例如：transform: translateY(-4px); transition: 0.3s ease; */
 }
 
-/* ---------- 最新文章（從後端讀取） ---------- */
-.j-latest {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 8px 4vw 64px;
+/* ---------- 精選輪播（最新／人氣／最多點閱） ---------- */
+.j-feature { padding-top: 44px; }
+
+.j-feature__head {
+  text-align: center;
+  padding: 0 6vw;
 }
 
-.j-latest[hidden] { display: none; }
-
-.j-latest__title {
-  font-family: "Noto Serif TC", serif;
-  font-weight: 500;
-  font-size: 20px;
-  letter-spacing: 0.12em;
-  margin: 0 0 14px;
+.j-feature__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--seal);
+  margin: 0 0 10px;
 }
 
-.j-latest__filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-
-.j-latest__filter {
-  font: inherit;
-  font-size: 12px;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid #D8CFC2;
-  border-radius: 999px;
-  padding: 5px 14px;
-  cursor: pointer;
-}
-
-.j-latest__filter.is-active { background: var(--ink); border-color: var(--ink); color: #fff; }
-
-.j-latest__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+/* 標題左右各一條細線，跟品牌理念的留白感一致 */
+.j-feature__title {
+  display: inline-flex;
+  align-items: center;
   gap: 18px;
-}
-
-.j-post {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #FAF8F4;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: 0.24em;
   color: var(--ink);
-  text-decoration: none;
-  transition: box-shadow 0.25s ease;
+  margin: 0;
 }
 
-.j-post:hover { box-shadow: 0 12px 26px rgba(42, 38, 32, 0.1); }
-.j-post__img { aspect-ratio: 4 / 5; background: #EDE6DA; }
-.j-post__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.j-post__body { padding: 16px 18px 20px; }
-.j-post__title { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 16px; line-height: 1.5; margin: 0 0 8px; }
-.j-post__summary { font-size: 13px; line-height: 1.75; color: var(--muted); margin: 0 0 10px; }
-.j-post__date { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+.j-feature__title::before,
+.j-feature__title::after {
+  content: "";
+  width: 44px;
+  height: 1px;
+  background: rgba(74, 64, 54, 0.3);
+}
 
-.j-latest__more {
-  display: block;
-  margin: 28px auto 0;
-  font: inherit;
+.j-feature__sub {
   font-size: 13px;
-  letter-spacing: 0.1em;
-  color: var(--ink);
-  background: transparent;
-  border: 1px solid var(--ink);
-  border-radius: 2px;
-  padding: 10px 32px;
-  cursor: pointer;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 10px 0 0;
+  min-height: 1.6em;
 }
 
-.j-latest__more[hidden] { display: none; }
+.j-feature__tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin-top: 18px;
+  padding: 4px;
+  background: #F3EEE6;
+  border-radius: 999px;
+}
+
+.j-feature__tabs[hidden] { display: none; }
+
+.j-feature__tab {
+  font: inherit;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.j-feature__tab:hover { color: var(--ink); }
+.j-feature__tab.is-active { background: #fff; color: var(--seal); box-shadow: 0 1px 4px rgba(42, 38, 32, 0.1); }
+
+.j-feature__stage {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 左右箭頭：貼在六張卡片外側、垂直置中 */
+.j-feature__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(74, 64, 54, 0.14);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(42, 38, 32, 0.08);
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.j-feature__arrow[hidden] { display: none; }
+.j-feature__arrow svg { width: 20px; height: 20px; }
+.j-feature__arrow--prev { left: max(12px, calc(50% - 700px)); }
+.j-feature__arrow--next { right: max(12px, calc(50% - 700px)); }
+.j-feature__arrow:hover { color: var(--seal); border-color: rgba(155, 61, 56, 0.45); box-shadow: 0 8px 22px rgba(42, 38, 32, 0.12); }
+.j-feature__arrow--prev:hover { transform: translateX(-2px); }
+.j-feature__arrow--next:hover { transform: translateX(2px); }
+
+/* 箭頭在卡片外側，要留出位置 */
+.j-feature .journal-columns {
+  padding-left: max(4vw, 76px);
+  padding-right: max(4vw, 76px);
+  transition: opacity 0.26s ease, transform 0.36s ease;
+}
+
+/* 讀取中先藏起來，避免手工卡片閃一下又被換掉 */
+.journal-columns.is-pending { opacity: 0; }
+.journal-columns.is-leaving { opacity: 0; transform: translateX(var(--shift, -28px)); }
+.journal-columns.is-entering { opacity: 0; transform: translateX(var(--shift, 28px)); transition: none; }
+
+/* 動態卡片：標題最多三行、底部放「閱讀全文」與點閱數 */
+.j-feature .j-card__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.j-feature .j-card--hero .j-card__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.j-card__foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.j-card__rank {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 6px;
+  font-family: "Noto Serif TC", serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--seal);
+  border-radius: 2px;
+}
+
+.j-card__views {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.j-card__views svg { width: 13px; height: 13px; }
+
+/* 卡片少於六張時，右欄不要被撐成空白高卡 */
+.journal-columns[data-count="1"] .j-col--hero,
+.journal-columns[data-count="2"] .j-col--hero { flex: 1.4; }
+
+/* ---------- 看全部文章 ---------- */
+.j-more {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1120px;
+  margin: 8px auto 72px;
+  padding: 34px 48px;
+  overflow: hidden;
+  background: linear-gradient(100deg, #F6F1E8 0%, #FAF8F4 60%, #F3EEE6 100%);
+  border: 1px solid rgba(74, 64, 54, 0.08);
+  border-radius: 18px;
+}
+
+.j-more__leaf {
+  width: 92px;
+  height: auto;
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.j-more__text { flex: 1; }
+.j-more__eyebrow { font-size: 10.5px; letter-spacing: 0.3em; color: var(--seal); margin: 0 0 6px; }
+.j-more__title { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 20px; letter-spacing: 0.12em; margin: 0 0 6px; }
+.j-more__desc { font-size: 13px; line-height: 1.8; color: var(--muted); margin: 0; }
+
+.j-more__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: #fff;
+  background: var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color 0.25s, gap 0.25s;
+}
+
+.j-more__btn:hover { background: #9B3D38; gap: 16px; }
+
+@media (max-width: 900px) {
+  .j-feature .journal-columns { padding-left: 6vw; padding-right: 6vw; }
+  .j-feature .j-col--hero { order: -1; } /* 第一名的大卡排最上面 */
+  /* 手機：箭頭移到標題列下方左右兩側，避免蓋住卡片 */
+  .j-feature__arrow { top: -30px; width: 40px; height: 40px; margin-top: -20px; }
+  .j-feature__arrow--prev { left: 6vw; }
+  .j-feature__arrow--next { right: 6vw; }
+  .j-feature__stage { margin-top: 54px; }
+  .j-more { flex-direction: column; text-align: center; margin: 8px 6vw 56px; padding: 28px 24px; gap: 16px; }
+  .j-more__leaf { width: 64px; }
+}

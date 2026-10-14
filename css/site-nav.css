@@ -1,0 +1,139 @@
+/*
+ * 固定在視窗最上方的功能列（首頁）。兩種樣式：
+ *   .site-nav--clear  全透明背景
+ *   .site-nav--frost  80% 透明的白底（毛玻璃）
+ * 預設用哪一種寫在 <nav data-variant>；網址加 ?nav=clear 或 ?nav=frost 可以直接切換比較。
+ */
+
+.site-nav {
+  --nav-h: 72px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000; /* 首頁詩句區塊是 9999，要壓在它上面 */
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 5vw;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav--clear { background: transparent; }
+
+.site-nav--frost {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom-color: rgba(74, 64, 54, 0.08);
+}
+
+/* 白底版往下捲之後加一點陰影，跟內容分開 */
+.site-nav--frost.is-scrolled { box-shadow: 0 6px 24px rgba(42, 38, 32, 0.06); }
+
+.site-nav__logo img { height: 40px; display: block; }
+
+.site-nav__links {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.site-nav__links a {
+  position: relative;
+  text-decoration: none;
+  color: #4A4036;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  padding: 6px 0;
+  transition: color 0.3s;
+}
+
+/* 滑過時底下長出一條細線，跟品牌的印章紅一致 */
+.site-nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 1px;
+  background: #9B3D38;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+
+.site-nav__links a:hover,
+.site-nav__links a.is-active { color: #9B3D38; }
+.site-nav__links a:hover::after,
+.site-nav__links a.is-active::after { left: 0; right: 0; }
+
+.site-nav__icons { display: flex; align-items: center; gap: 6px; }
+
+.site-nav__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #4A4036;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.site-nav__icon:hover { background: rgba(155, 61, 56, 0.08); color: #9B3D38; }
+.site-nav__icon svg { width: 21px; height: 21px; }
+
+.site-nav__count {
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  min-width: 17px;
+  padding: 0 5px;
+  font-size: 10.5px;
+  line-height: 17px;
+  text-align: center;
+  color: #fff;
+  background: var(--seal, #A6432E);
+  border-radius: 999px;
+}
+
+.site-nav__count[hidden] { display: none; }
+.site-nav__menu-btn { display: none; }
+
+/* ---------- 手機：連結收進右側抽屜 ---------- */
+@media (max-width: 960px) {
+  .site-nav { --nav-h: 60px; }
+  .site-nav__logo img { height: 34px; }
+  .site-nav__menu-btn { display: inline-flex; }
+  .site-nav__links {
+    position: fixed;
+    top: var(--nav-h);
+    right: 0;
+    bottom: 0;
+    width: min(78vw, 300px);
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 18px 28px;
+    background: #FAF8F4;
+    box-shadow: -12px 0 32px rgba(42, 38, 32, 0.12);
+    transform: translateX(105%);
+    transition: transform 0.35s ease;
+  }
+  .site-nav__links a {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(74, 64, 54, 0.08);
+  }
+  .site-nav__links a::after { display: none; }
+  .site-nav.is-open .site-nav__links { transform: none; }
+  /* 透明版打開選單時，功能列本身也要有底色，不然 logo 會壓在內容上 */
+  .site-nav.is-open { background: #FAF8F4; }
+}

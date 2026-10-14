@@ -82,7 +82,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     status.hidden = true;
     $("[data-article]").hidden = false;
+    if (a.status === "published") countView(slug);
   } catch (e) {
     status.textContent = "暫時無法載入文章，請稍後再試。";
   }
 });
+
+// 記一次點閱（給蟬吃誌的「人氣文章」「最多點閱」）。同一個分頁重新整理不重複算；後端另外依 IP 去重。
+function countView(slug) {
+  const key = `zentea_viewed_${slug}`;
+  try {
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, "1");
+  } catch (e) {
+    /* 無痕模式等：交給後端去重 */
+  }
+  const api = window.ZenteaCart ? window.ZenteaCart.apiBase : "";
+  fetch(`${api}/api/articles/${encodeURIComponent(slug)}/view/`, { method: "POST", keepalive: true }).catch(() => {});
+}
