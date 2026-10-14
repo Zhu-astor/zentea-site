@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 卡片：沿用原本 .j-card 的版型（文字左、圖片右；中間大卡上文下圖）
   function card(a, rank, variant, showViews) {
-    const link = el("a", `j-card ${variant}`.trim());
+    const link = el("a", `j-card j-card--photo ${variant}`.trim());
     link.href = `article.html?slug=${encodeURIComponent(a.slug)}`;
     const body = el("div", "j-card__body");
     const eyebrow = el("p", "j-card__eyebrow");

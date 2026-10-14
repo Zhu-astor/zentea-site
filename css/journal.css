@@ -316,7 +316,7 @@ html, body.journal-page {
 
 .j-feature__stage {
   position: relative;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -325,9 +325,9 @@ html, body.journal-page {
   position: absolute;
   top: 50%;
   z-index: 3;
-  width: 48px;
-  height: 48px;
-  margin-top: -24px;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -342,16 +342,14 @@ html, body.journal-page {
 
 .j-feature__arrow[hidden] { display: none; }
 .j-feature__arrow svg { width: 20px; height: 20px; }
-.j-feature__arrow--prev { left: max(12px, calc(50% - 700px)); }
-.j-feature__arrow--next { right: max(12px, calc(50% - 700px)); }
+.j-feature__arrow--prev { left: max(2px, calc(2vw - 22px)); }
+.j-feature__arrow--next { right: max(2px, calc(2vw - 22px)); }
 .j-feature__arrow:hover { color: var(--seal); border-color: rgba(155, 61, 56, 0.45); box-shadow: 0 8px 22px rgba(42, 38, 32, 0.12); }
 .j-feature__arrow--prev:hover { transform: translateX(-2px); }
 .j-feature__arrow--next:hover { transform: translateX(2px); }
 
-/* 箭頭在卡片外側，要留出位置 */
+/* 卡片版型、欄寬跟原本手工排版完全一樣，只加切換動畫 */
 .j-feature .journal-columns {
-  padding-left: max(4vw, 76px);
-  padding-right: max(4vw, 76px);
   transition: opacity 0.26s ease, transform 0.36s ease;
 }
 
@@ -364,14 +362,14 @@ html, body.journal-page {
 .j-feature .j-card__title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
 .j-feature .j-card--hero .j-card__desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
@@ -382,17 +380,8 @@ html, body.journal-page {
   flex-wrap: wrap;
 }
 
-.j-card__rank {
-  display: inline-block;
-  margin-right: 8px;
-  padding: 1px 6px;
-  font-family: "Noto Serif TC", serif;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: #fff;
-  background: var(--seal);
-  border-radius: 2px;
-}
+.j-card__rank { margin-right: 6px; }
+.j-card__rank::after { content: "・"; margin-left: 6px; }
 
 .j-card__views {
   display: inline-flex;
@@ -403,6 +392,17 @@ html, body.journal-page {
 }
 
 .j-card__views svg { width: 13px; height: 13px; }
+
+/* 照片卡片：圖片邊緣淡進米色底，不要硬邊的方塊 */
+.j-card--photo:not(.j-card--fade-a):not(.j-card--fade-b):not(.j-card--hero) .j-card__media {
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,1) 60%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,1) 60%);
+}
+
+.j-card--photo.j-card--hero .j-card__media {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 18%, rgba(0,0,0,1) 40%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 18%, rgba(0,0,0,1) 40%);
+}
 
 /* 卡片少於六張時，右欄不要被撐成空白高卡 */
 .journal-columns[data-count="1"] .j-col--hero,
@@ -453,7 +453,6 @@ html, body.journal-page {
 .j-more__btn:hover { background: #9B3D38; gap: 16px; }
 
 @media (max-width: 900px) {
-  .j-feature .journal-columns { padding-left: 6vw; padding-right: 6vw; }
   .j-feature .j-col--hero { order: -1; } /* 第一名的大卡排最上面 */
   /* 手機：箭頭移到標題列下方左右兩側，避免蓋住卡片 */
   .j-feature__arrow { top: -30px; width: 40px; height: 40px; margin-top: -20px; }
