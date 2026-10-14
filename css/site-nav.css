@@ -1,7 +1,7 @@
 /*
  * 固定在視窗最上方的功能列（首頁）。兩種樣式：
  *   .site-nav--clear  全透明背景
- *   .site-nav--frost  80% 透明的白底（毛玻璃）
+ *   .site-nav--frost  20% 不透明的白底（毛玻璃）
  * 預設用哪一種寫在 <nav data-variant>；網址加 ?nav=clear 或 ?nav=frost 可以直接切換比較。
  */
 
@@ -25,7 +25,7 @@
 .site-nav--clear { background: transparent; }
 
 .site-nav--frost {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
   backdrop-filter: saturate(140%) blur(10px);
   border-bottom-color: rgba(74, 64, 54, 0.08);
