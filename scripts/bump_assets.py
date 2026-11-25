@@ -16,7 +16,7 @@ def version(rel):
     return hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.exists() else None
 
 
-for html in sorted(root.glob('*.html')):
+for html in sorted([*root.glob('*.html'), *root.glob('en/*.html')]):  # en/：英文版
     text = html.read_text(encoding='utf-8')
     new = pattern.sub(lambda m: m.group(1) + m.group(2) + (f'?v={v}' if (v := version(m.group(2))) else '') + m.group(3), text)
     if new != text:

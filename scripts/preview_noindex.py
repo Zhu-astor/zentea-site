@@ -8,7 +8,7 @@ from pathlib import Path
 
 TAG = '<meta name="robots" content="noindex, nofollow">'
 root = Path(sys.argv[1])
-for html in sorted(root.glob('*.html')):
+for html in sorted([*root.glob('*.html'), *root.glob('en/*.html')]):  # en/：英文版
     text = html.read_text(encoding='utf-8')
     if re.search(r'<meta name="robots"', text):
         new = re.sub(r'<meta name="robots"[^>]*>', TAG, text)
