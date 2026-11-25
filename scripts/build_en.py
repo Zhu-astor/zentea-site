@@ -15,7 +15,9 @@ from pathlib import Path
 
 root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent
 SITE = 'https://www.organic-naturetea.com/'
-PAGES = ['index.html', 'products.html', 'product.html']
+PAGES = ['index.html', 'products.html', 'product.html', 'cart.html', 'checkout.html', 'order-complete.html',
+         'order-lookup.html', 'find-tea.html', 'experience.html', 'video.html', 'journal.html', 'knowledge.html',
+         'articles.html', 'article.html']
 CJK = re.compile(r'[㐀-鿿]')
 
 table = json.loads((root / 'i18n' / 'en.json').read_text(encoding='utf-8'))

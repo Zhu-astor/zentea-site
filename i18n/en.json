@@ -32,7 +32,25 @@
     "加入收藏": "Add to favorites",
     "加入購物車": "Add to cart",
     "了解更多": "Learn more",
-    "茶品介紹": "Our Teas"
+    "茶品介紹": "Our Teas",
+    "減少數量": "Decrease quantity",
+    "增加數量": "Increase quantity",
+    "商品小計": "Subtotal",
+    "運費": "Shipping",
+    "訂單摘要": "Order Summary",
+    "購物車裡還沒有茶": "Your cart is empty",
+    "去逛逛茶品": "Browse our teas",
+    "← 繼續逛逛": "← Continue shopping",
+    "訂單狀態": "Order Status",
+    "訂單編號": "Order number",
+    "配送方式": "Shipping method",
+    "取貨門市": "Pickup store",
+    "訂單內容": "Order Items",
+    "總額": "Total",
+    "清除篩選": "Clear filters",
+    "分類": "Category",
+    "找到自己的茶": "Find Your Tea",
+    "把山林、茶香與生活裡的留白，慢慢寫下來。": "Mountains, tea and the quiet spaces of everyday life, written down slowly."
   },
   "index.html": {
     "蟬吃茶｜台灣烏龍茶與蜜香紅茶・選茶測驗與茶知識": "蟬吃茶｜Taiwanese Oolong & Black Tea – Tea Quiz and Tea Knowledge",
@@ -131,7 +149,11 @@
     "茶包": "Tea Bags",
     "茶葉": "Loose Leaf",
     "茶具": "Teaware",
-    "禮盒": "Gift Sets"
+    "禮盒": "Gift Sets",
+    "蟬吃蜜香紅茶": "Honey-Flavored Black Tea",
+    "蟬吃佳葉龍茶": "Hand-Picked Gaba Tea",
+    "蟬吃鮮翠烏龍茶": "Chan Chih Oolong Tea",
+    "蟬吃玉山烏龍茶": "Yushan Oolong Tea"
   },
   "product.html": {
     "茶品介紹 | 蟬吃茶 ZenEaTea": "Our Teas | 蟬吃茶",
@@ -161,5 +183,132 @@
     "查看更多": "Read more",
     "找不到這款茶，可能已經下架了": "We couldn't find this tea. It may no longer be available.",
     "看看其他茶品": "See other teas"
+  },
+  "cart.html": {
+    "購物車 | 蟬吃茶 ZenEaTea": "Cart | 蟬吃茶",
+    "正在確認最新價格與庫存…": "Checking the latest prices and stock…",
+    "商品": "Item",
+    "數量": "Quantity",
+    "小計": "Subtotal",
+    "← 繼續選購": "← Continue shopping",
+    "結帳時計算": "Calculated at checkout",
+    "商品總額": "Total",
+    "運費於結帳時確認。": "Shipping is calculated at checkout.",
+    "部分商品目前無法購買，請先調整數量或移除": "Some items are unavailable. Please change the quantity or remove them.",
+    "前往結帳": "Checkout",
+    "移除": "Remove"
+  },
+  "checkout.html": {
+    "結帳 | 蟬吃茶 ZenEaTea": "Checkout | 蟬吃茶",
+    "結帳": "Checkout",
+    "正在確認購物車內容…": "Checking your cart…",
+    "← 回購物車": "← Back to cart",
+    "訂購人資料": "Your Details",
+    "姓名": "Name",
+    "手機": "Mobile",
+    "訂單通知會寄到這個信箱": "We'll send order updates to this email.",
+    "收件人資料": "Recipient",
+    "收件人同訂購人": "Same as above",
+    "收件人姓名": "Recipient name",
+    "收件人手機": "Recipient mobile",
+    "正在載入配送方式…": "Loading shipping methods…",
+    "尚未選擇取貨門市": "No pickup store selected",
+    "選擇門市": "Choose a store",
+    "郵遞區號": "Postal code",
+    "宅配地址": "Delivery address",
+    "縣市、區、路名、門牌號碼": "City, district, street and number",
+    "付款方式": "Payment",
+    "信用卡": "Credit card",
+    "支援 Visa、Mastercard、JCB。按下「前往付款」後會轉到綠界 ECPay 的安全付款頁面刷卡，本站不會經手您的卡號。": "We accept Visa, Mastercard and JCB. After you click “Continue to payment”, you'll be taken to ECPay's secure payment page. We never see your card number. Payment is charged in New Taiwan dollars (NT$).",
+    "超商取貨與宅配皆由綠界物流配送；收件人姓名需與證件相符（2～5 個中文字或 4～10 個英文字母）。": "Store pickup and home delivery are handled by ECPay Logistics within Taiwan. The recipient's name must match their ID (2–5 Chinese characters or 4–10 English letters).",
+    "備註": "Notes",
+    "（選填）": "(optional)",
+    "想告訴我們的事，例如送禮需求": "Anything we should know, such as gift requests",
+    "選擇配送方式後計算": "Choose a method",
+    "應付總額": "Total",
+    "前往付款": "Continue to payment"
+  },
+  "order-complete.html": {
+    "訂單狀態 | 蟬吃茶 ZenEaTea": "Order Status | 蟬吃茶",
+    "正在確認付款結果…": "Checking your payment…"
+  },
+  "order-lookup.html": {
+    "訂單查詢 | 蟬吃茶 ZenEaTea": "Order Status | 蟬吃茶",
+    "請輸入訂單編號（ZT 開頭，在訂單確認信裡）與下單時填寫的 Email。": "Enter your order number (starts with ZT, found in your confirmation email) and the email you used to order.",
+    "查詢": "Look up",
+    "寄貨編號": "Tracking number",
+    "物流狀態": "Delivery status"
+  },
+  "find-tea.html": {
+    "選茶測驗｜5 題找到適合你的台灣茶｜蟬吃茶": "Tea Quiz｜Find Your Taiwanese Tea in 5 Questions｜蟬吃茶",
+    "不知道該選哪一款茶？回答 5 個關於喝茶時間、喜歡的味道與泡法的問題，依香氣、焙火與茶湯厚度比對，推薦最適合你的一款台灣茶。": "Not sure which tea to choose? Answer 5 questions about when you drink tea, the flavors you like and how you brew, and we'll match you with a Taiwanese tea by aroma, roast and body.",
+    "尋茶日常": "Find Your Everyday Tea",
+    "一杯好茶，讓日常更好": "A good cup makes every day better",
+    "讓一杯好茶，陪你過日子。": "Let a good cup of tea keep you company, day after day."
+  },
+  "experience.html": {
+    "蟬茗齋茶體驗（即將開放）｜蟬吃茶": "蟬茗齋 Tea Experience (Coming Soon)｜蟬吃茶",
+    "蟬茗齋的品茶、泡茶與茶席體驗正在準備中，開放後會在這裡公告。": "Tea tasting, brewing and tea-table experiences at 蟬茗齋 are being prepared. We'll announce them here when they open.",
+    "一張茶席，一壺好茶，留一段時間給自己。": "A tea table, a good pot of tea, and some time for yourself.",
+    "山水有時・茶有日常": "Mountains and rivers have their seasons・Tea has its everyday",
+    "蟬茗齋茶體驗，即將開放": "蟬茗齋 tea experiences are coming soon",
+    "品茶、泡茶與茶席體驗正在準備中。": "Tea tasting, brewing and tea-table experiences are being prepared.",
+    "想先認識我們的茶，可以從這裡開始：": "Want to get to know our teas first? Start here:"
+  },
+  "video.html": {
+    "蟬茶影音｜蟬吃茶": "蟬茶影音｜蟬吃茶",
+    "蟬吃茶的影音專區：泡茶、茶園與製茶的故事，影片即將上架。": "Videos from 蟬吃茶: brewing, our tea gardens and how tea is made. Coming soon.",
+    "茶香，跨越時間空間，在每一段影像裡說茶的故事。": "The aroma of tea crosses time and space. Every video tells a story of tea.",
+    "影片準備中，即將上架，敬請期待。": "Videos are on the way. Stay tuned.",
+    "播放影片": "Play video",
+    "關閉": "Close"
+  },
+  "journal.html": {
+    "蟬茶誌｜茶園、製茶師與活動紀錄｜蟬吃茶": "蟬茶誌｜Tea Gardens, Tea Makers and Events｜蟬吃茶",
+    "蟬茶誌：蟬吃茶的茶園、製茶師、比賽得獎與公益活動紀錄，關於我們的人、茶園與日常。": "蟬茶誌: stories of 蟬吃茶's tea gardens, tea makers, awards and community work. Our people, our gardens and our everyday."
+  },
+  "knowledge.html": {
+    "茶知識｜泡茶方法、製茶工藝、產地風土｜蟬吃茶": "Tea Knowledge｜Brewing, Tea Making and Terroir｜蟬吃茶",
+    "蟬吃茶的茶知識：冷泡與熱泡的方法、茶葉怎麼保存、發酵與焙火的差別、海拔與產地風土，用好懂的方式認識台灣茶。": "Tea knowledge from 蟬吃茶: hot and cold brewing, storing tea, oxidation and roasting, altitude and terroir. An easy way to get to know Taiwanese tea.",
+    "從認識一片茶葉，到泡好手中的一杯茶。": "From understanding a single leaf to brewing a good cup.",
+    "茶知識精選文章": "Featured tea knowledge articles",
+    "精選文章": "Featured Articles",
+    "上一組文章": "Previous articles",
+    "下一組文章": "Next articles",
+    "產地故事": "Origins",
+    "品牌理念": "Our Philosophy",
+    "知識型": "Tea Knowledge",
+    "榮譽・信任資產": "Awards",
+    "閱讀全文 →": "Read more →",
+    "更多文章，慢慢翻": "More articles to explore",
+    "依分類、日期找到想讀的那一篇，還能看到大家最常讀哪些。": "Browse by category or date, and see what others read most.",
+    "看全部文章": "See all articles"
+  },
+  "articles.html": {
+    "全部文章｜茶知識｜蟬吃茶": "All Articles｜Tea Knowledge｜蟬吃茶",
+    "茶知識全部文章：依分類、月份瀏覽茶知識、製茶工藝、產地風土與茶的日常。": "All tea knowledge articles from 蟬吃茶, by category and month: tea basics, tea making, terroir and everyday tea.",
+    "蟬吃茶印章": "蟬吃茶 seal",
+    "依分類、月份慢慢翻，也看看大家最常讀哪幾篇。": "Browse by category and month, and see which articles are read most.",
+    "篩選文章": "Filter articles",
+    "搜尋標題或內容": "Search titles or content",
+    "搜尋文章": "Search articles",
+    "發布月份": "Month",
+    "排序": "Sort",
+    "最新": "Newest",
+    "最近 30 天點閱最多": "Most read in the last 30 days",
+    "人氣": "Popular",
+    "上線以來累積點閱最多": "Most read of all time",
+    "最多點閱": "Most read",
+    "沒有符合的文章": "No matching articles",
+    "換個關鍵字，或清除篩選看看所有文章。": "Try another keyword, or clear the filters to see all articles.",
+    "暫時無法載入文章，請稍後再試。": "We couldn't load the articles. Please try again later.",
+    "分頁": "Pagination"
+  },
+  "article.html": {
+    "文章 | 蟬吃茶 ZenEaTea": "Article | 蟬吃茶",
+    "← 回茶知識": "← Back to Tea Knowledge",
+    "文章載入中…": "Loading article…",
+    "預覽中：這篇文章是草稿，還沒有公開。": "Preview: this article is a draft and not yet published.",
+    "參考資料": "References"
   }
 }
